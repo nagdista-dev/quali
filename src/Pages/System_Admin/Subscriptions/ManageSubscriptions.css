@@ -1,0 +1,170 @@
+/* ===== ManageSubscriptions Page ===== */
+
+.ms-page {
+  direction: rtl;
+  font-family: "Cairo", "Segoe UI", sans-serif;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---- Header ---- */
+.ms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.ms-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+.ms-filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.ms-filter-btn:hover {
+  background: #eef2fb;
+  color: #1a4fa0;
+}
+
+/* ---- Table Wrapper ---- */
+.ms-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #e8eaf0;
+}
+
+/* ---- Table ---- */
+.ms-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: right;
+}
+
+.ms-table thead tr {
+  background: #f7f8fc;
+}
+
+.ms-table th {
+  padding: 13px 16px;
+  font-weight: 700;
+  color: #1a2e5a;
+  font-size: 13px;
+  border-bottom: 1.5px solid #e8eaf0;
+  white-space: nowrap;
+}
+
+.ms-table td {
+  padding: 13px 16px;
+  color: #444;
+  font-size: 13px;
+  border-bottom: 1px solid #f0f2f7;
+  white-space: nowrap;
+}
+
+.ms-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ms-table tbody tr:hover {
+  background: #f5f7ff;
+  transition: background 0.15s;
+}
+
+/* ---- Status Badge ---- */
+.ms-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.ms-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Active */
+.ms-status--active {
+  color: #2e7d32;
+  background: #e8f5e9;
+}
+.ms-status--active .ms-status-dot {
+  background: #43a047;
+}
+
+/* Suspended */
+.ms-status--suspended {
+  color: #c62828;
+  background: #ffebee;
+}
+.ms-status--suspended .ms-status-dot {
+  background: #e53935;
+}
+
+/* Expired */
+.ms-status--expired {
+  color: #e65100;
+  background: #fff3e0;
+}
+.ms-status--expired .ms-status-dot {
+  background: #fb8c00;
+}
+
+/* ---- Footer ---- */
+.ms-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.ms-edit-btn {
+  display: inline-flex;
+  align-items: right;
+  gap: 8px;
+  background: #1a2e5a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Cairo", sans-serif;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s,
+    transform 0.15s;
+}
+
+.ms-edit-btn:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+.ms-edit-btn:active {
+  transform: scale(0.97);
+}

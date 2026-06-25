@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap");
+
+body {
+  font-family: "Noto Kufi Arabic", sans-serif;
+  direction: rtl;
+}
+
+.app {
+  font-family: "Noto Kufi Arabic", sans-serif;
+  direction: rtl;
+}
+
+/* TOP NAV */
+.top-nav {
+  background: #fff;
+  padding: 14px 20px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  border-bottom: 1px solid #e8ecf0;
+}
+.nav-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a2332;
+}
+.filter-btn {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid #dde3ea;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4a5568;
+  font-size: 16px;
+}
+
+/* SEARCH */
+.search-wrap {
+  padding: 16px 20px 12px;
+  background: #fff;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  background: #f5f6fa;
+  border: 1.5px solid #e8ecf0;
+  border-radius: 24px;
+  padding: 9px 16px;
+  gap: 8px;
+}
+.search-box input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: "Noto Kufi Arabic", sans-serif;
+  font-size: 13.5px;
+  color: #1a2332;
+  outline: none;
+  text-align: right;
+}
+.search-box input::placeholder {
+  color: #042c67;
+}
+.search-icon {
+  color: #b0b8c4;
+  font-size: 15px;
+}
+
+/* GRID */
+.colleges-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; /* كان 14 */
+  padding: 24px; /* كان 16 */
+}
+
+/* CARD */
+.college-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1.5px solid #032445;
+  padding: 24px 16px; /* كان 16 */
+  min-height: 220px; /* يخلي الكارد أطول */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px; /* كان 10 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* LOGO */
+.card-logo {
+  width: 90px; /* كان 72 */
+  height: 90px; /* كان 72 */
+  border-radius: 50%;
+  border: 3px solid #1b3a6b;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2f8;
+}
+.card-logo svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* NAME */
+.card-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #1a2332;
+  text-align: center;
+  line-height: 1.6;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #e3e6eb; /* الخط الرصاصي */
+}
+.card-logo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid #1b3a6b;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2f8;
+}
+
+.card-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* STATUS ROW */
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.status-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7a8d;
+}
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dot-red {
+  background: #e74c3c;
+}
+.dot-green {
+  background: #27ae60;
+}
+.dot-yellow {
+  background: #f1c40f;
+}
+
+.text-red {
+  color: #e74c3c;
+}
+.text-green {
+  color: #27ae60;
+}
+.text-yellow {
+  color: #d4ac0d;
+}
+
+/* BUTTON */
+.card-btn {
+  width: 100%;
+  padding: 9px 0;
+  background: #1b3a6b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: "Noto Kufi Arabic", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: opacity 0.2s;
+  margin-top: 2px;
+}
+.card-btn:hover {
+  opacity: 0.88;
+  background: #0559df;
+}

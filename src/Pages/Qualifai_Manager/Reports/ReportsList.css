@@ -1,0 +1,69 @@
+/* الحاوية الرئيسية */
+
+/* تنسيق الهيدر (العنوان والأيقونة) */
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0;
+}
+
+.header-icon {
+  color: #888;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* تنسيق عنصر القائمة الواحد */
+.report-item {
+  display: flex;
+  justify-content: space-between; /* يوزع العناصر أقصى اليمين وأقصى اليسار */
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #e0e0e0; /* الخط الفاصل الرمادي */
+}
+
+/* إزالة الخط الفاصل من آخر عنصر */
+.report-item:last-child {
+  border-bottom: none;
+}
+
+/* تنسيق نص التاريخ */
+.report-date {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.date-number {
+  font-family: sans-serif; /* لضمان ظهور الأرقام بشكل جيد */
+}
+
+/* تنسيق الزر الأزرق */
+.view-btn {
+  background-color: #0a2a5e; /* اللون الكحلي */
+  color: white;
+  border: none;
+  width: 20%;
+  border-radius: 13px;
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.2s;
+}
+
+.view-btn:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}

@@ -1,0 +1,217 @@
+.college-reports-container {
+  direction: rtl;
+  font-family: "Cairo", "Segoe UI", sans-serif;
+}
+
+/* Breadcrumb */
+.college-reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.college-filter-btn {
+  width: 90px;
+  height: 40px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.college-filter-btn svg {
+  font-size: 26px;
+  color: #818181;
+}
+
+.college-filter-btn:hover {
+  background: #f1f5f9;
+  border-color: #3d64d1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.college-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 23px;
+}
+
+.breadcrumb-back {
+  margin: 0px 10px 8px 5px;
+
+  color: #000000;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.breadcrumb-back:hover {
+  color: #2563eb;
+}
+
+.breadcrumb-sep {
+  color: #a2a2a2;
+  margin: 0px 10px 8px 5px;
+
+  font-size: 48px;
+}
+
+.breadcrumb-current {
+  font-weight: 700;
+  margin: 0px 10px 8px 5px;
+
+  color: #1e293b;
+  font-size: 18px;
+}
+
+/* Search */
+.college-search-wrapper {
+  position: relative;
+  margin: 0px 8px 15px auto;
+  width: 350px;
+}
+
+.college-search-input {
+  width: 600px;
+  padding: 12px 46px 12px 42px; /* مسافة من اليمين للأيقونة */
+  border: 1.5px solid #052c6b;
+  border-radius: 25px;
+  font-size: 14px;
+  font-family: "Cairo", sans-serif;
+  color: #1e293b;
+  background: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  direction: rtl;
+}
+.college-search-input:focus {
+  border-color: #3d64d1;
+  background: #fafdff;
+}
+.college-search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* List */
+.college-reports-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.college-report-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 16px 8px;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 16px;
+}
+
+.college-report-row:last-child {
+  border-bottom: none;
+}
+
+.report-right {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: 1;
+}
+
+.report-info {
+  display: flex;
+  flex-direction: column;
+}
+.report-arrow {
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: inline-block;
+  margin-top: 24px;
+}
+
+.report-arrow.open {
+  transform: rotate(90deg);
+}
+
+.report-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
+  display: block;
+  margin-top: 24px;
+}
+
+.report-details {
+  font-size: 17px;
+  color: #686868;
+  margin: 16px 0 0 0;
+  line-height: 2.9;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.report-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.report-date-wrapper {
+  display: flex;
+  gap: 49px;
+  align-items: center;
+}
+
+.report-date-label {
+  font-size: 16px;
+  color: #000000;
+}
+
+.report-date {
+  font-size: 16px;
+  font-weight: 600;
+  color: #686868;
+}
+
+.report-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #0f2e5c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 58px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.report-download-btn:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(30, 64, 175, 0.25);
+}

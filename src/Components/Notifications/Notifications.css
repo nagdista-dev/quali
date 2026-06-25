@@ -1,0 +1,124 @@
+/* Title */
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.mark-all-btn {
+  background-color: #002d6f;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: inline-block;
+  /* animation basics */
+  transition: all 0.25s ease;
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 45, 111, 0.2);
+}
+
+/* Hover effect */
+.mark-all-btn:hover {
+  background-color: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 45, 111, 0.3);
+}
+
+/* Click effect */
+.mark-all-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 3px 8px rgba(0, 45, 111, 0.2);
+}
+
+/* Optional: smooth fade-in animation when page loads */
+.mark-all-btn {
+  animation: fadeInBtn 0.4s ease-in-out;
+}
+
+@keyframes fadeInBtn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Notifications card */
+.notifications-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #f3f3f3;
+  padding: 25px;
+}
+
+/* Single notification item */
+.notification-item {
+  border-bottom: 1px solid #f3f3f3;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.notification-desc {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.notification-time {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #999;
+}
+
+/* Loading and no-data */
+.loading,
+.no-data {
+  padding: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+}
+
+/* Chatbot button */
+.chatbot-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #fefefe;
+  background-color: #002d6f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(14, 14, 14, 0.3);
+  transition: transform 0.2s;
+  z-index: 1000;
+}
+
+.chatbot-btn:hover {
+  background-color: #0f61dd;
+  transform: scale(1.1);
+}
+.chatbot-btn:active {
+  background-color: #0d58ca;
+}

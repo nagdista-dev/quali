@@ -1,0 +1,222 @@
+.add-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  direction: rtl;
+  padding: 0 10px;
+}
+
+.page-title {
+  color: black;
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.add-btn {
+  background: #002f6c;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none;
+}
+
+.add-btn:hover {
+  background: #0f61dd;
+  color: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+.add-btn .plus-sign {
+  font-size: 25px;
+  margin-left: 8px;
+}
+
+/* جدول الموظفين */
+.employees-table {
+  width: 100%;
+  border: 1px solid rgb(5, 5, 99);
+  text-align: right;
+  font-size: 14px;
+  border-radius: 12px;
+  overflow: hidden;
+  direction: rtl;
+  background-color: #fff;
+}
+
+.employees-table tbody {
+  display: block;
+  max-height: 430px;
+  overflow-y: auto;
+}
+
+.employees-table thead,
+.employees-table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.employees-table thead {
+  background: #fefefe;
+  color: #000;
+}
+
+.employees-table th,
+.employees-table td {
+  border-bottom: 1px solid #bbc4e8;
+  padding: 15px 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: right;
+  vertical-align: middle; /* لضمان توسيط الأزرار عمودياً */
+}
+
+.employees-table tbody tr:hover {
+  background: #f9faff;
+}
+
+/* -------------------------------------- */
+/* تنسيق الأزرار الجديدة (تعديل وحذف) */
+/* -------------------------------------- */
+
+.actions-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 👈 مسافة بينهم */
+}
+/* زر التعديل */
+.btn-edit {
+  background-color: #002f6c; /* لون أخضر */
+  color: white;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 45%;
+}
+
+.btn-edit:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+/* زر الحذف */
+.btn-delete1 {
+  background-color: #ffffff;
+  color: rgb(216, 27, 27);
+  border: 1px solid #c82333;
+  padding: 5px 10px; /* 👈 صغرنا الـ padding */
+  border-radius: 6px;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 👈 مسافة صغيرة بين الأيقونة والكلام */
+  width: auto; /* 👈 أهم تعديل */
+}
+
+.btn-delete1:hover {
+  background: #ff6769;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(162, 5, 36, 0.3);
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  z-index: 999;
+}
+
+.toast.success {
+  background-color: #16a34a;
+}
+
+.toast.error {
+  background-color: #dc2626;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 350px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-box h3 {
+  margin-bottom: 10px;
+}
+
+.modal-box p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-cancel {
+  background: #e5e7eb;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-confirm {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+}

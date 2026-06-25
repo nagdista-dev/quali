@@ -1,0 +1,90 @@
+/* الخلفية العامة للصفحة */
+.status-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 70vh; */
+  /* background-color: #fff; خلفية بيضاء كما في الصورة */
+  /* font-family: "Segoe UI", sans-serif; */
+  /* direction: rtl; */
+  width: 1150px;
+}
+
+/* المحتوى الداخلي */
+.status-content {
+  text-align: center;
+  max-width: 300px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* تنسيق الصورة (الروبوت) */
+.status-image {
+  width: 360px; /* حجم مناسب للصورة */
+  height: auto;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+/* العناوين */
+.status-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #555; /* لون رمادي غامق للنص */
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+/* الرسالة الوصفية */
+.status-message {
+  font-size: 23px;
+  color: #777; /* لون رمادي فاتح */
+  margin-bottom: 30px;
+  margin-right: 50px;
+  line-height: 1.6;
+  justify-content: center;
+  text-align: center;
+}
+
+/* الأزرار (إضافة من عندي لتحسين التجربة) */
+.btn-home,
+.btn-retry {
+  padding: 12px 40px;
+  margin-right: 50px;
+
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  justify-content: center;
+  font-size: 1rem;
+  transition: transform 0.2s;
+}
+
+.btn-home {
+  background-color: #002d62;
+  color: white;
+}
+
+.btn-retry {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.btn-home:hover,
+.btn-retry:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  background: #0f61dd;
+}
+
+/* أنيميشن بسيط للظهور */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

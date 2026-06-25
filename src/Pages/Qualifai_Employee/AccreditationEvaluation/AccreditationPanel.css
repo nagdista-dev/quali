@@ -1,0 +1,230 @@
+/* --- تنسيقات رأس الصفحة (Header) --- */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.title-main {
+  color: #000;
+}
+
+.separator {
+  color: #888;
+  display: flex;
+  align-items: center;
+}
+
+.title-sub {
+  color: #000;
+}
+
+/* --- تنسيقات القوائم (Accordion) --- */
+/* --- تنسيقات القوائم (Accordion) --- */
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-item {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.accordion-item:first-child {
+  border-top: 1px solid transparent;
+}
+
+/* الرأس يحتوي على العنوان وزر التقارير */
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.accordion-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 1.05rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.chevron-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+}
+
+/* جسم القائمة المنزلق للأسفل */
+.accordion-body {
+  padding-right: 35px; /* لعمل إزاحة تحت العنوان */
+  margin-top: 20px; /* مسافة بين العنوان والأزرار الملونة */
+  display: flex;
+}
+
+.status-group {
+  display: flex;
+  gap: 15px;
+}
+
+.action-group {
+  margin-right: auto; /* يدفع الزر لأقصى اليسار في وضع الـ RTL */
+}
+
+/* --- تنسيقات الأزرار --- */
+.view-reports-btn {
+  background-color: transparent;
+  border: 1px solid #7c8fb5;
+  color: #1b264d;
+  padding: 8px 25px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.view-reports-btn:hover {
+  background-color: #f4f6fb;
+}
+
+/* أزرار الحالة الملونة */
+.status-btn {
+  border: none;
+  padding: 8px 30px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-yellow {
+  background-color: #bccc24; /* لون مقارب للأخضر المصفر */
+}
+
+.btn-green {
+  background-color: #0b9a30;
+}
+
+.btn-red {
+  background-color: #c91e1e;
+}
+
+/* --- تنسيقات قسم الملاحظات --- */
+.notes-section {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.notes-label {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.notes-textarea {
+  width: 100%;
+  border: 1px solid #aeb8cc;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+}
+
+.notes-textarea:focus {
+  border-color: #0a2d72;
+}
+
+/* --- تنسيقات الأزرار السفلية --- */
+.footer-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.footer-btn {
+  padding: 12px 40px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 200px; /* لتوحيد حجم الأزرار السفلية */
+}
+
+.btn-reject {
+  background-color: #c91e1e;
+}
+.btn-reject:hover {
+  background: #ff6769;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(162, 5, 36, 0.3);
+}
+
+.btn-approve {
+  background-color: #0a2d72;
+}
+.btn-approve:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+/* تأثير بسيط عند فتح القائمة */
+.accordion-body {
+  padding-right: 35px;
+  margin-top: 20px;
+  display: flex;
+  animation: slideDown 0.3s ease-out; /* حركة انسيابية */
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* تنسيق أيقونة Font Awesome */
+.chevron-icon i {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+  color: #333;
+}
+
+.separator i {
+  font-size: 12px;
+  color: #888;
+  margin: 0 5px;
+}
+.header-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: #002d6f;
+  transition: color 0.2s;
+}
+.header-icon:hover {
+  color: #0f61dd;
+}

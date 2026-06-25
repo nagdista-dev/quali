@@ -1,0 +1,108 @@
+/* عنوان الصفحة */
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+/* الجدول */
+.activities-table {
+  width: 100%;
+  text-align: right;
+  border: 2px solid #bbc4e8;
+  border-radius: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+/* صف الهيدر نفسه */
+.activities-table thead tr {
+  background-color: #f9fcff;
+}
+
+/* الهيدر يبقى شفاف ومتوصل */
+.activities-table thead th {
+  background: transparent; /* مهم جدًا */
+  border: none;
+  padding: 14px;
+  font-weight: 600;
+  color: #333;
+}
+.activities-table thead th * {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+/* خط واحد تحت الهيدر */
+.activities-table thead {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* محتوى الجدول */
+.activities-table td {
+  padding: 14px 10px;
+  color: #444;
+  border-top: 1px solid #eee;
+}
+
+.activities-table tbody tr:hover {
+  background-color: #f3f7ff;
+  transition: 0.2s;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.filter-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: #002d6f;
+  transition: color 0.2s;
+}
+
+.filter-icon:hover {
+  color: #0f61dd;
+}
+
+.search-input {
+  width: "80%";
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #180238;
+  border-radius: 16px;
+  font-size: 14px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #002d6f;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination button:disabled {
+  background-color: #aaa;
+  cursor: default;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: #0f61dd;
+}

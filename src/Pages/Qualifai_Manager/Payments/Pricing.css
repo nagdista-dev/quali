@@ -1,0 +1,182 @@
+/* ===== Header ===== */
+.pricing-header {
+  text-align: right;
+  margin-bottom: 35px;
+}
+
+.pricing-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.pricing-header p {
+  color: #666;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+/* ===== شبكة الكروت ===== */
+.cards-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+/* ===== كارت كل خطة ===== */
+.pricing-card {
+  border: 1.8px solid #002d62;
+  border-radius: 12px;
+  padding: 25px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1 1 280px; /* يسمح بالتمدّد */
+  min-width: 280px;
+}
+
+/* شارة خطة النمو */
+.growth-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: white;
+  border: 1px solid #002d62;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #002d62;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* عنوان ووصف الخطة */
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-align: right;
+  margin-top: 25px;
+}
+
+.card-desc {
+  text-align: right;
+  color: #666;
+  font-size: 0.95rem;
+  margin: 10px 0 20px 0;
+  line-height: 1.5;
+  min-height: 40px;
+}
+
+/* السعر */
+.price-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.currency {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #002d62;
+  margin-top: 10px;
+}
+
+.amount {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+/* زر البدء */
+.btn-start {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.btn-start:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+.btn-solid {
+  background: #002d62;
+  color: white;
+  border: none;
+}
+.btn-solid:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #002d62;
+  border: 2px solid #002d62;
+}
+
+/* قائمة المميزات */
+.feature-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.85rem;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.icon-blue {
+  color: #002d62;
+  flex-shrink: 0;
+}
+
+/* الفوتر */
+.pricing-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.btn-cancel {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.btn-cancel:hover {
+  background: #ff6769;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(162, 5, 36, 0.3);
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .cards-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .pricing-footer {
+    flex-direction: column-reverse;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .pricing-header {
+    text-align: center;
+  }
+}

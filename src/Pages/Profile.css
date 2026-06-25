@@ -1,0 +1,137 @@
+.profilePage-photo-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 70px; /* المسافة بين Avatar والأزرار */
+  margin-bottom: 40px;
+}
+
+/* الحاوية بتاعت Avatar والأزرار */
+.profilePage-avatar-box {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* المسافة بين كل زر */
+}
+
+/* دائرة الصورة */
+.profilePage-avatar-circle {
+  width: 130px;
+  height: 130px;
+  background: #e9eaef;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: gray;
+  overflow: hidden;
+}
+
+/* أزرار التحميل والحذف */
+.profilePage-upload-btn,
+.profilePage-delete-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.profilePage-upload-btn {
+  background: #0a2f63;
+  color: white;
+  border: none;
+}
+
+.profilePage-delete-btn {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  color: red;
+}
+/* Titles */
+.profilePage-title {
+  margin: 40px 0 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Grid for Inputs */
+.profilePage-grid-2 {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.profilePage-input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.profilePage-input-group label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.profilePage-input-group input {
+  padding: 14px;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  font-size: 16px;
+}
+/* Hover زر تحميل الصورة */
+.profilePage-upload-btn {
+  background: #0a2f63;
+  color: white;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.profilePage-upload-btn:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+/* Hover زر الحذف */
+.profilePage-delete-btn {
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  color: red;
+  transition: all 0.3s ease;
+}
+
+.profilePage-delete-btn:hover {
+  background: #ffecec;
+  border-color: red;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.25);
+}
+
+/* Update Buttons */
+.profilePage-update-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 40px;
+}
+
+.profilePage-update-btn {
+  background: #0a2f63;
+  width: 30%;
+  transition: all 0.3s ease;
+
+  color: white;
+  padding: 14px 36px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.profilePage-update-btn:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}

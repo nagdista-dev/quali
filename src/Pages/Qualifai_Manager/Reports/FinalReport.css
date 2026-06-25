@@ -1,0 +1,203 @@
+/* الهيدر */
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.report-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.download-btn {
+  color: #0a2a5e;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* النصوص العامة */
+.top-description {
+  color: #666;
+  line-height: 1.8;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.section-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* القوائم */
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-right: 20px;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.bullet-list li::before {
+  content: "•";
+  position: absolute;
+  right: 0;
+  color: #999;
+}
+
+/* شريط التقدم */
+.progress-area {
+  margin-bottom: 50px;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  gap: 40px;
+}
+
+.progress-label {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.progress-percent {
+  color: #999;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  direction: ltr;
+}
+
+.progress-fill {
+  background-color: #0a2a5e;
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* شبكة التفاصيل (الأعمدة) */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* البوكس نفسه */
+.details-box {
+  /* border: 2px dashed #c4c5c7; */
+  border-radius: 12px;
+  padding: 20px 24px;
+  background: #fff;
+}
+
+/* عنوان البوكس */
+.box-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #0a2a5e;
+}
+
+/* نص التقييم */
+.box-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+/* سطور تاريخ التعديل */
+.meta-line {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.meta-line strong {
+  color: #333;
+  margin-left: 6px;
+}
+.eval-text {
+  color: #777;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.edit-info-list {
+  list-style: none;
+  padding: 0;
+}
+
+.edit-info-list li {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.edit-info-list strong {
+  color: #555;
+}
+
+/* الأزرار */
+.footer-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.btn-submit {
+  flex: 1;
+  background-color: #0a2a5e;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.btn-contact {
+  flex: 1;
+  background-color: white;
+  color: #0a2a5e;
+  border: 1.5px solid #d0d7de;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.btn-contact:hover,
+.btn-submit:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+/* تحسين الاستجابة للموبايل */
+@media (max-width: 768px) {
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-actions {
+    flex-direction: column;
+  }
+}

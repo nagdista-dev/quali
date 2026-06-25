@@ -1,0 +1,410 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap");
+
+/* رأس الصفحة */
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+}
+
+.main-title {
+  font-size: 24px;
+  font-weight: 700;
+  /* margin: 0; */
+}
+
+.sub-title {
+  font-size: 24px;
+  font-weight: 700;
+  /* margin: 0; */
+}
+
+.separator {
+  font-size: 28px;
+  color: #a2a2a2;
+  font-weight: bold;
+}
+
+/* البطاقة الرئيسية */
+.main-card {
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  border: 1px solid #100052;
+}
+
+.table-header {
+  border-bottom: 2px solid #b8b8b8;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.table-header h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+/* صفوف الملفات */
+.file-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 2px solid #b8b8b8;
+}
+
+.file-row:last-child {
+  border-bottom: none;
+}
+
+/* معلومات الملف (يمين) */
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 46px;
+  /* flex-direction: row-reverse; */
+}
+
+.file-name {
+  font-weight: 800;
+  font-size: 17px;
+  color: #686868;
+  min-width: 250px;
+  text-align: right;
+}
+
+.file-years {
+  display: flex;
+  gap: 8px;
+}
+
+/* أيقونة الملف */
+.file-icon {
+  width: 35px;
+  height: 45px;
+  background-color: #0d2b5b;
+  color: white;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  box-sizing: border-box; /* محلي فقط للأيقونة */
+}
+
+.file-icon::after {
+  content: "✖";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  color: red;
+  font-size: 12px;
+  background: white;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+
+.file-icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0px;
+  border-width: 0 10px 10px 0;
+  border-style: solid;
+  border-color: #fff #fff rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.3);
+  background: #2a4d85;
+  width: 0;
+}
+
+/* الأزرار (يسار) */
+.file-actions {
+  display: flex;
+  gap: 18px;
+}
+.file-icon.clickable {
+  cursor: pointer;
+}
+
+.file-icon.clickable:hover {
+  transform: scale(1.05);
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-family: "Cairo", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  outline: none;
+  border: none;
+}
+
+.btn-upload {
+  background-color: #0d2b5b;
+  color: white;
+  min-width: 120px;
+}
+
+.btn-upload:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+.btn-deadline {
+  background-color: white;
+  color: #0d2b5b;
+  border: 1px solid #0d2b5b;
+  min-width: 120px;
+}
+
+.btn-deadline:hover {
+  background: #e3edf6;
+  transform: translateY(-2px);
+}
+
+/* شريط التقدم */
+.progress-section {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-right: 30px;
+  padding: 0 20px;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: flex-start; /* تغيير من space-between */
+  gap: 18px; /* إضافة مسافة بينهم */
+  margin-bottom: 13px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #0d0d0d;
+}
+.progress-value {
+  color: #686868;
+  font-size: 18px;
+}
+.progress-bar-bg {
+  width: 1000px;
+  height: 10px;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #0d2b5b;
+  border-radius: 5px;
+}
+
+/* زر التحليل النهائي */
+.footer-action {
+  text-align: center;
+}
+
+.btn-analyze {
+  background-color: #0d2b5b;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  margin: 12px;
+  width: 1000px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-analyze:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+/* Overlay */
+.calendar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal */
+.calendar-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 320px;
+  font-family: "Cairo", sans-serif;
+}
+
+.calendar-title {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Footer */
+.calendar-footer {
+  margin-top: 15px;
+}
+
+.deadline-row,
+.reminder-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.date-value {
+  background: #f3f3f3;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+  background: #0d2b5b;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+.calendar-close-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #0d2b5b;
+  color: white;
+  cursor: pointer;
+}
+
+/* Media Query للهواتف */
+@media (max-width: 768px) {
+  .file-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .file-info {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .file-years {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .file-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn {
+    width: 48%;
+  }
+}
+/* زرار رفع الملفات بعد رفعه */
+.btn-upload.uploaded {
+  background-color: #4caf50; /* أخضر */
+  color: white;
+  cursor: default; /* يمنع التفاعل */
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-upload.uploaded::after {
+  content: " ✓"; /* علامة صح بعد النص */
+  font-weight: bold;
+  font-size: 14px;
+}
+/* زرار رفع الملفات بعد رفعه */
+.btn-upload.uploaded {
+  background-color: #e9ecef; /* لون رمادي فاتح يوحي بأن الزر غير فعال */
+  color: #6c757d; /* لون نص رمادي غامق */
+  border: 1px solid #ced4da; /* إطار خفيف يحدد الزر */
+  cursor: not-allowed !important; /* علامة الماوس تتحول لعلامة المنع لتأكيد إنه مش شغال */
+  box-shadow: none;
+  transform: none;
+  opacity: 0.9;
+}
+
+/* إضافة علامة الصح قبل النص بشكل منظم */
+.btn-upload.uploaded::before {
+  content: "✔";
+  margin-left: 8px; /* مسافة بسيطة بين العلامة والنص */
+  color: #28a745; /* لون أخضر زاهي لعلامة الصح ليدل على نجاح الرفع */
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* إلغاء تأثير الـ hover عشان ميتغيرش لما الماوس ييجي عليه */
+.btn-upload.uploaded:hover {
+  background-color: #e9ecef;
+  transform: none;
+  box-shadow: none;
+}

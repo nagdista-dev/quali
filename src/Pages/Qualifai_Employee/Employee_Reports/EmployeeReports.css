@@ -1,0 +1,159 @@
+.reports-container {
+  direction: rtl;
+  font-family: "Cairo", "Segoe UI", sans-serif;
+}
+
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.reports-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-btn svg {
+  font-size: 26px;
+  color: #64748b;
+  transition: all 0.2s ease;
+}
+
+.filter-btn svg:hover {
+  color: #2563eb;
+  transform: scale(1.1);
+}
+
+/* الجدول */
+.reports-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  border: 3px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.reports-table th {
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 700;
+  color: #334155;
+  font-size: 14px;
+  white-space: nowrap;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.reports-table td {
+  padding: 14px 16px;
+  text-align: center;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.reports-table td:last-child {
+  border-left: none;
+}
+
+.date-cell {
+  white-space: pre-line;
+  color: #64748b !important;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ✅ تثبيت عرض عمود الحالة */
+.reports-table th:nth-child(4),
+.reports-table td:nth-child(4) {
+  width: 170px;
+}
+
+/* ✅ غلاف الحالة */
+.status-column {
+  position: relative;
+}
+
+/* wrapper */
+.status-cell {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ✅ الدوت ثابتة */
+.status-dot1 {
+  position: absolute;
+  right: 40px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* الأكشنز */
+.actions-cell {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #052c6b;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 7px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.download-btn:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+.notes-btn {
+  background: #fff;
+  color: #374151;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  padding: 7px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.notes-btn:hover {
+  background: #d4e5ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}

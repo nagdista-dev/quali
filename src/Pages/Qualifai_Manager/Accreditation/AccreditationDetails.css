@@ -1,0 +1,86 @@
+.accreditation-details-page {
+  width: 100%;
+  padding: 3px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.details-container {
+  width: 100%;
+  max-width: 100%; /* ⬅️ غيرت من 600px عشان ياخد العرض كله */
+  padding: 20px;
+}
+
+.details-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 70px;
+  text-align: right;
+  direction: rtl;
+  padding-right: 20px; /* ⬅️ إضافة */
+}
+
+.video-placeholder {
+  width: 100%;
+  max-width: 600px; /* ⬅️ إضافة عشان الفيديو ميبقاش عريض أوي */
+  height: 400px;
+  background: #ffffff;
+  border: none; /* ⬅️ شيلت البوردر */
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 50px auto;
+}
+
+.video-text {
+  font-size: 86px;
+  font-weight: 700;
+  color: #1a1a1a;
+
+  font-family: Arial, sans-serif;
+}
+
+.back-button {
+  width: 800px;
+  padding: 14px 28px;
+  background: #052c6b;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.back-button:hover {
+  background: #0f61dd;
+  border-color: #052c6b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .details-container {
+    padding: 30px 20px;
+  }
+
+  .details-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .video-placeholder {
+    height: 300px;
+  }
+
+  .video-text {
+    font-size: 56px;
+  }
+}

@@ -1,0 +1,112 @@
+/* Header */
+.prev-reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.prev-reports-title {
+  margin: 0px 30px 8px auto;
+  font-size: 23px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.prev-filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prev-filter-btn svg {
+  font-size: 26px;
+  color: #818181;
+  transition: all 0.2s ease;
+}
+
+.prev-filter-btn svg:hover {
+  color: #2563eb;
+  transform: scale(1.1);
+}
+
+/* Search */
+.prev-search-wrapper {
+  position: relative;
+  margin: 0px 20px 25px auto;
+  width: 380px;
+}
+
+.prev-search-input {
+  width: 700px;
+  padding: 12px 46px 12px 42px; /* مسافة من اليمين للأيقونة */
+  border: 1.5px solid #052c6b;
+  border-radius: 25px;
+  font-size: 14px;
+  font-family: "Cairo", sans-serif;
+  color: #1e293b;
+  background: #ffffff;
+  outline: none;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+.prev-search-input:focus {
+  border-color: #3d64d1;
+  background: #fafdff;
+}
+
+.prev-search-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* List */
+.prev-colleges-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.prev-college-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.prev-college-row:last-child {
+  border-bottom: none;
+}
+
+.prev-college-name {
+  font-size: 19px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* الزرار */
+.prev-show-btn {
+  background: #0f2e5c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 9px 42px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.prev-show-btn:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(30, 64, 175, 0.25);
+}

@@ -1,0 +1,211 @@
+.payment-outer-wrapper {
+  background-color: #f3f4f6; /* اللون الرصاصي للخلفية */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  margin-right: 200px;
+  margin-left: -90px;
+  padding: 40px 40px 20px 40px;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background-color: #f3f3f3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: rtl;
+  font-family: sans-serif;
+
+  width: 1000px;
+}
+
+.payment-inner-box {
+  background: #fff;
+  padding: 20px 50px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  overflow-y: hidden;
+  width: 1175px;
+}
+
+/* شريط التنقل العلوي */
+.payment-breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* يبدأ من اليمين بسبب RTL */
+  gap: 10px;
+  margin-bottom: 40px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.payment-breadcrumb-active {
+  color: #000;
+}
+.payment-breadcrumb-link {
+  color: #888;
+  cursor: pointer;
+}
+.payment-breadcrumb-icon {
+  color: #888;
+}
+
+/* الاستمارة */
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.payment-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.payment-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: right;
+}
+
+.payment-form-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.payment-input {
+  padding: 14px 18px;
+  border: 1.5px solid #bdc9d8;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-align: right;
+  outline: none;
+  background: #fff;
+  transition: border-color 0.3s;
+}
+
+.payment-input:focus {
+  border-color: #002d62;
+}
+
+/* حقل التاريخ مع الأيقونة */
+.payment-input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.payment-input-with-icon .payment-input {
+  width: 100%;
+}
+
+.payment-calendar-icon {
+  position: absolute;
+  left: 15px; /* أيقونة التقويم بجهة اليسار */
+  color: #1a1a1a;
+}
+
+/* خانة التذكر */
+.payment-checkbox-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: #888;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.payment-checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #002d62;
+}
+
+/* زر الدفع الكحلي */
+.payment-btn-submit {
+  background-color: #002d62;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.payment-btn-submit:hover {
+  background-color: #001a3a;
+}
+/* لضمان أن حاوية التاريخ تأخذ كامل العرض */
+.date-picker-wrapper {
+  width: 100%;
+}
+
+/* تعديل شكل التقويم ليناسب ألوان تصميمك */
+.react-datepicker {
+  font-family: sans-serif;
+  border-radius: 12px;
+  border: 1px solid #bdc9d8;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.react-datepicker__header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eee;
+}
+
+.react-datepicker__day--selected {
+  background-color: #002d62 !important; /* لون الكحلي الخاص بكِ */
+  border-radius: 50%;
+}
+
+/* لضمان بقاء الأيقونة فوق حقل التاريخ المختار */
+.payment-calendar-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* لكي لا تمنع الضغط على الحقل تحتها */
+  z-index: 10;
+}
+/* تنسيق علامة التحميل */
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spinner-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* تعطيل الزر أثناء التحميل */
+.payment-btn-submit:disabled {
+  background-color: #55708e;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+/* التجاوب مع الموبايل */
+@media (max-width: 650px) {
+  .payment-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

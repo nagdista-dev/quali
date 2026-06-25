@@ -1,0 +1,214 @@
+role-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.role-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: rtl;
+}
+.role-form {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 30px;
+  max-width: 1100px;
+}
+
+.form-group2 {
+  margin-bottom: 15px;
+  text-align: right;
+  flex: 0 0 35%;
+}
+
+.form-group2.wide {
+  flex: 0 0 60%;
+}
+
+.form-group2 label {
+  display: flex;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 17px;
+}
+.form-group2 input {
+  /* padding: 10px; */
+  border-radius: 8px;
+  border: 1px solid #002d6f;
+  text-align: right;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 16px 14px;
+  font-size: 16px;
+}
+
+/* Permissions */
+.permissions-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.permission-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 14px 18px;
+}
+.permission-name {
+  font-size: 20px;
+}
+.permission-actions {
+  margin-left: 100px;
+}
+.header2 {
+  margin-left: 200px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.permissions-header,
+.permission-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+}
+.permissions-header {
+  background: #f5f6f8;
+}
+
+.permission-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.permission-actions button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #b6cae9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.permission-actions .active {
+  background: #003366;
+  color: white;
+  border-color: #003366;
+}
+
+.permission-actions button:not(.active) {
+  color: #003366;
+  border-color: #003366;
+}
+
+.permission-actions button:not(.active) svg {
+  color: #003366;
+}
+.permission-actions button:not(.active):hover {
+  background-color: #c1d4f0;
+}
+.permission-actions .active:hover {
+  background-color: #6a89aa;
+}
+
+/* Sub files */
+.sub-rows-container {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+}
+.permission-row.sub-row {
+  padding-right: 45px;
+  background-color: #fff;
+  border-bottom: 1px solid #edf2f7;
+  min-height: 30px;
+}
+.sub-rows-container .sub-row:last-child {
+  border-bottom: none;
+}
+.sub-file-name {
+  color: #555;
+  font-size: 1rem;
+}
+/* Save Button */
+.save-btn {
+  width: 80%;
+  margin-right: 80px;
+  max-width: 1100px;
+  padding: 14px;
+  margin-top: 30px;
+  background-color: #002d6f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.save-btn:hover {
+  background-color: #0457c4;
+}
+
+.save-btn:active {
+  background-color: #002050;
+}
+
+/* ================= Modal ================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 14px;
+  min-width: 320px;
+  text-align: center;
+  animation: scaleIn 0.25s ease;
+}
+
+.modal-box h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.modal-box p {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+.modal-box.success h3 {
+  color: #198754;
+}
+
+.modal-box.error h3 {
+  color: #dc3545;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

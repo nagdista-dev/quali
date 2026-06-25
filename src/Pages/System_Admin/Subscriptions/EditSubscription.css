@@ -1,0 +1,210 @@
+/* ===== EditSubscription Page ===== */
+
+.es-page {
+  direction: rtl;
+  font-family: "Cairo", "Segoe UI", sans-serif;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---- Breadcrumb ---- */
+.es-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.es-breadcrumb-parent {
+  color: #000000;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.es-breadcrumb-parent:hover {
+  color: #1a4fa0;
+  text-decoration: underline;
+}
+
+.es-breadcrumb-arrow {
+  color: #888;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.es-breadcrumb-current {
+  color: #000000;
+}
+
+/* ---- Row ---- */
+.es-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* ---- Field ---- */
+.es-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 160px;
+}
+
+/* ---- Label ---- */
+.es-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+/* ---- Select ---- */
+.es-select-wrapper {
+  position: relative;
+}
+
+.es-select {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 10px 14px 10px 32px;
+  border: 1.5px solid #dde2ec;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: "Cairo", sans-serif;
+  color: #333;
+  background: #fff;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.es-select:hover {
+  border-color: #1a4fa0;
+}
+
+.es-select:focus {
+  border-color: #1a4fa0;
+  box-shadow: 0 0 0 3px rgba(26, 79, 160, 0.1);
+}
+
+.es-arrow {
+  margin-top: -14px;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #888;
+  font-size: 30px;
+}
+
+/* ---- Input ---- */
+.es-input-wrapper {
+  position: relative;
+}
+
+.es-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #dde2ec;
+  border-radius: 11px;
+  font-size: 15px;
+  font-family: "Cairo", sans-serif;
+  color: #333;
+  background: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.es-input:hover {
+  border-color: #1a4fa0;
+}
+
+.es-input:focus {
+  border-color: #1a4fa0;
+  box-shadow: 0 0 0 3px rgba(26, 79, 160, 0.1);
+}
+
+.es-cal-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* ---- Button Row ---- */
+.es-button-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* ---- Buttons ---- */
+.es-btn {
+  margin-top: 45px;
+  flex: 1;
+  max-width: 250px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Cairo", sans-serif;
+
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  transition:
+    background 0.2s,
+    box-shadow 0.2s,
+    transform 0.15s;
+}
+
+.es-btn:active {
+  transform: scale(0.97);
+}
+
+/* Save */
+.es-btn-save {
+  background: #1a2e5a;
+  color: #fff;
+}
+
+.es-btn-save:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+/* Suspend */
+.es-btn-suspend {
+  background: #e53935;
+  color: #fff;
+}
+
+.es-btn-suspend:hover {
+  background: #e3bfbf;
+  border-color: red;
+  color: #9d1010;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.25);
+}

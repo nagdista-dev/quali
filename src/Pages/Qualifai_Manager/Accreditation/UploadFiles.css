@@ -1,0 +1,442 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap");
+
+.upload-page {
+  width: 100%;
+  padding: 60px 60px;
+  direction: rtl;
+  font-family: "Tajawal", sans-serif;
+}
+
+/* العنوان */
+.upload-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 27px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.separator {
+  color: #a2a2a2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-new {
+  color: #000;
+}
+
+.uploaded-files {
+  color: #000000;
+}
+
+/* صندوق الرفع */
+.upload-box {
+  width: 950px;
+  height: 260px;
+  border: 6px dashed #ccc;
+  border-radius: 30px;
+  background: #fafafa;
+  margin-top: 80px;
+  margin-right: 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* رسالة الخطأ */
+.error-message {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #dc2626;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+  animation:
+    slideInDown 0.4s ease-out,
+    pulse-error 2s ease-in-out infinite;
+  z-index: 10;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes pulse-error {
+  0%,
+  100% {
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    box-shadow: 0 6px 30px rgba(220, 38, 38, 0.6);
+  }
+}
+
+.error-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* شكل التحميل */
+.upload-box.uploading {
+  border-color: #052c6b;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fc 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-box.uploading::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(5, 44, 107, 0.03) 0%,
+    transparent 70%
+  );
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* أيقونة التحميل */
+.upload-icon-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.upload-icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #052c6b 0%, #0a4eb3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 8px 24px rgba(5, 44, 107, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 8px 24px rgba(5, 44, 107, 0.3),
+      inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow:
+      0 12px 32px rgba(5, 44, 107, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+}
+.uploaded-files-list {
+  width: 950px;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #f7f9fc;
+}
+
+.uploaded-file-item {
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.upload-spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* النص */
+.upload-text {
+  color: #686868;
+  font-size: 23px;
+  text-align: center;
+  z-index: 2;
+}
+
+/* زرار الرفع */
+.upload-btn {
+  background: #052c6b;
+  color: white;
+  border: none;
+  padding: 18px 33px;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+  font-family: "Tajawal", sans-serif;
+  z-index: 2;
+}
+
+.upload-btn:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+
+/* Progress Bar داخل صندوق التحميل */
+.upload-progress {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 8px;
+  background: #e5e5e5;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #052c6b 0%, #0a4eb3 100%);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.progress-bar-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #052c6b;
+  min-width: 50px;
+}
+
+/* بوكس الملاحظات - تحت صندوق الرفع */
+.notes-box-below {
+  width: 890px;
+  height: 200px;
+  padding: 5px;
+  margin: 5px 18px 5px;
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notes-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #052c6b;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.notes-textarea {
+  width: 900px;
+  height: 90px;
+  padding: 10px;
+  border: 2px solid #e8ecf1;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: "Tajawal", sans-serif;
+  resize: vertical;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+  box-sizing: border-box;
+}
+
+.notes-textarea:focus {
+  outline: none;
+  border-color: #052c6b;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(5, 44, 107, 0.1);
+}
+
+.notes-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+  justify-content: flex-end;
+}
+
+.notes-btn {
+  padding: 12px 38px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  font-family: "Tajawal", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.cancel-btn {
+  height: 50px;
+  margin-top: 30px;
+  width: 300px;
+  background: #d4d8dd;
+  color: #4a5568;
+}
+
+.cancel-btn:hover {
+  background: #ebeff4;
+  transform: translateY(-2px);
+}
+
+.submit-btn {
+  width: 960px;
+  background: linear-gradient(135deg, #052c6b 0%, #0a4eb3 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(5, 44, 107, 0.25);
+}
+
+.submit-btn:hover {
+  box-shadow: 0 6px 20px rgba(5, 44, 107, 0.35);
+  transform: translateY(-2px);
+}
+
+.submit-btn:active,
+.cancel-btn:active {
+  transform: translateY(0);
+}
+
+/* الملاحظة */
+.upload-note {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #686868;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .upload-box,
+  .notes-box-below {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .upload-page {
+    padding: 40px 30px;
+  }
+
+  .error-message {
+    width: 90%;
+    left: 50%;
+  }
+}
+
+@media (max-width: 640px) {
+  .upload-header {
+    font-size: 20px;
+  }
+
+  .upload-box {
+    height: 220px;
+  }
+
+  .upload-text {
+    font-size: 18px;
+  }
+
+  .notes-box-below {
+    padding: 20px;
+  }
+
+  .notes-actions {
+    flex-direction: column;
+  }
+
+  .notes-btn {
+    width: 100%;
+  }
+
+  .error-message {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+}

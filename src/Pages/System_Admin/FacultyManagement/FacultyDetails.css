@@ -1,0 +1,113 @@
+.faculty-details-container {
+  font-family: "Cairo", sans-serif;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.breadcrumb-icon {
+  color: gray;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.avatar-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-upload {
+  background: #0c2b64;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group input,
+.input-group select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sub-title {
+  margin: 20px 0 10px;
+  font-weight: bold;
+}
+.buttons {
+  display: flex;
+  gap: 10px; /* مسافة بينهم */
+  align-items: center;
+}
+.btn-save {
+  background: #0c2b64;
+  color: white;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn-save:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
+}
+.stop-btn {
+  background: #dc3545; /* أحمر */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stop-btn:hover {
+  background: #ff6769;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(162, 5, 36, 0.3);
+}

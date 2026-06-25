@@ -1,0 +1,275 @@
+/* استيراد خط عربي جميل (اختياري) */
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
+/* 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f4f4f4; /* لون خلفية الصفحة الرمادي الفاتح 
+}
+
+.main-container {
+  font-family: "Tajawal", sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} */
+
+/* --- رأس الصفحة --- */
+.page-header {
+  text-align: right;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  font-weight: 700;
+}
+
+.page-header p {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* --- واجهة الشات --- */
+.chat-interface {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden; /* لقص الزوايا */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 600px; /* ارتفاع ثابت للشات */
+}
+
+/* الشريط الأزرق العلوي للشات */
+.chat-header {
+  background-color: #0c2d64; /* الأزرق الداكن */
+  color: white;
+  padding: 15px 20px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* منطقة الرسائل */
+.messages-area {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.message-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 80%;
+}
+
+/* تنسيق رسائل المستخدم (على اليمين في الكود، لكن الصورة تظهر اليسار) */
+/* ملاحظة: الصورة محاذاتها غير تقليدية قليلاً للعربية، لكن سنحاكي الصورة */
+
+/* المستخدم: أيقونة + فقاعة */
+.user-row {
+  align-self: flex-start; /* محاذاة لليسار */
+  flex-direction: row; /* الأيقونة يسار، النص يمينها */
+}
+
+/* البوت: فقاعة + أيقونة */
+.bot-row {
+  align-self: flex-end; /* محاذاة لليمين */
+  flex-direction: row-reverse; /* الأيقونة يمين، النص يسارها */
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0; /* رمادي للمستخدم */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  flex-shrink: 0;
+}
+
+.bot-row .avatar {
+  background-color: #0c2d64; /* أزرق للبوت */
+  color: white;
+}
+
+.message-bubble {
+  background-color: #0056b3; /* الأزرق المتوسط للفقاعات */
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+/* --- منطقة الإدخال السفلية --- */
+.input-area {
+  background-color: #0c2d64; /* الأزرق الداكن */
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.send-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  margin-right: -5px; /* تقريب الزر من حقل الكتابة قليلاً */
+  transition: all 0.3s ease; /* إضافة تأثير انتقالي سلس */
+}
+
+.send-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* تغيير اللون عند الوقوف */
+  transform: scale(1.1); /* تكبير الزر قليلاً */
+}
+
+.input-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  width: 95%;
+  padding: 12px 20px;
+  border-radius: 25px; /* حواف دائرية */
+  border: 1px solid #ccc;
+  outline: none;
+  background-color: #ffffff !important; /* خلفية بيضاء */
+  color: #333333 !important; /* نص داكن */
+  font-family: "Tajawal", sans-serif;
+  text-align: right;
+  direction: rtl;
+}
+
+.input-wrapper input::placeholder {
+  color: #999;
+}
+
+.extra-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.extra-icons svg {
+  cursor: pointer;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.extra-icons svg:hover {
+  opacity: 1;
+}
+.input-area {
+  position: relative; /* ضروري لتموضع القوائم بالنسبة له */
+}
+
+/* تنسيق حاوية الإيموشن */
+.emoji-picker-wrapper {
+  position: absolute;
+  bottom: 80px; /* تظهر فوق شريط الإدخال */
+  left: 20px;
+  z-index: 100;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+}
+
+.emoji-header {
+  background: #f0f0f0;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* تنسيق قائمة المرفقات */
+.attach-menu {
+  position: absolute;
+  bottom: 80px;
+  right: 60px; /* تظهر فوق زر الزائد */
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  width: 160px;
+  animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.attach-menu button {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: "Tajawal", sans-serif;
+  color: #333;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.attach-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+/* الأزرار الصغيرة للأيقونات */
+.icon-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s;
+}
+
+.icon-btn:active {
+  transform: scale(0.9);
+}
+
+/* تنسيق الصور داخل الشات */
+.image-preview img {
+  max-width: 200px;
+  border-radius: 8px;
+  display: block;
+}

@@ -1,0 +1,71 @@
+.success-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 80vh; ليأخذ معظم مساحة الشاشة ويبقى في المنتصف */
+  background-color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.success-card {
+  text-align: center;
+  max-width: 500px;
+  padding: 20px;
+}
+
+/* تنسيق الصورة */
+.robot-container {
+  margin-bottom: 30px;
+}
+
+.robot-image {
+  width: 250px; /* يمكنك تكبيرها أو تصغيرها حسب جودة الصورة عندك */
+  /* height: auto; */
+  /* إضافة تحريك خفيف لجعل الصفحة حيوية (اختياري) */
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* تنسيق النصوص */
+.success-title {
+  font-size: 1.6rem;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.success-subtitle {
+  font-size: 1.2rem;
+  color: #777;
+  line-height: 1.6;
+}
+
+/* تنسيق الزر */
+.back-home-btn {
+  margin-top: 40px;
+  background-color: #0a2a5e; /* اللون الكحلي الموحد في مشروعك */
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: inherit;
+}
+
+.back-home-btn:hover {
+  background-color: #143d7d;
+}

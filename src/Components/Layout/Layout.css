@@ -1,0 +1,36 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #eaeaea;
+}
+
+.layout-content {
+  flex: 1;
+  position: relative;
+}
+
+/* Gray container */
+.gray-container {
+  position: fixed;
+  top: 100px; /* 20px TopBar top + 60px ارتفاع TopBar + 20px فاصلة */
+  left: 20px;
+  right: 280px; /* مطابق TopBar */
+  bottom: 20px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+/* White container */
+.white-container {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  direction: rtl; /* هذا السطر سيجعل كل محتويات الحاوية تبدأ من اليمين */
+  text-align: right;
+}

@@ -1,0 +1,205 @@
+.sidebar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 225px;
+  height: calc(100vh - 40px);
+  background: #003366;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  direction: rtl;
+}
+
+.logo-image {
+  width: 190px;
+  height: auto;
+  display: block;
+  border-bottom: 2px solid white;
+  margin: 5px auto 5px auto;
+  text-align: center;
+  object-fit: contain;
+  pointer-events: none;
+  filter: none !important; /* ده هيلغي أي فلتر */
+  transition: none !important;
+}
+
+/* ---------------------------
+      الـ MENU (القائمة)
+--------------------------- */
+
+.menu {
+  /* margin-top: 0px; */
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  text-align: right;
+  gap: 12px;
+  padding: 15px 1px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+/* أيقونات القائمة */
+.menu-icon {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  transition: 0.3s;
+}
+
+/* الـ Links */
+.item a:link,
+.item a:visited {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Active State - العنصر النشط */
+.menu li.active .menu-icon,
+.suppor-logout .item.active .menu-icon {
+  color: #55e8ff !important;
+}
+
+.menu li.active span,
+.menu li.active a,
+.suppor-logout .item.active span,
+.suppor-logout .item.active a {
+  color: #55e8ff !important;
+  font-weight: 600;
+}
+
+/* Hover على الـ item كله */
+.menu li:hover {
+  transform: scale(1.05);
+}
+.menu li:hover .menu-icon,
+.suppor-logout .item:hover .menu-icon {
+  color: #55e8ff;
+  transform: scale(1.05);
+}
+
+.menu li:hover span,
+.menu li:hover a,
+.suppor-logout .item:hover span,
+.suppor-logout .item:hover a {
+  color: #55e8ff;
+  transform: none;
+}
+
+.menu li.active img {
+  filter: brightness(1.5);
+}
+.menu .item a,
+.suppor-logout .item a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+/* ---------------------------
+     الدعم + الخروج
+--------------------------- */
+
+.suppor-logout {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  direction: rtl;
+}
+
+.suppor-logout .item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 1px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.suppor-logout .item a:link,
+.suppor-logout .item a:visited {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.active-link {
+  color: #55e8ff !important;
+  font-weight: 600;
+}
+
+.active-link + .menu-icon {
+  color: #55e8ff;
+}
+.menu a.active,
+.suppor-logout a.active {
+  color: #55e8ff !important;
+  font-weight: 600;
+}
+.item:has(a.active) .menu-icon {
+  color: #55e8ff;
+}
+
+/* Hover على الدعم والخروج */
+.suppor-logout .item:hover .menu-icon {
+  color: #55e8ff;
+  transform: scale(1.05);
+}
+
+.suppor-logout .item:hover span,
+.suppor-logout .item:hover a {
+  color: #55e8ff;
+  transform: scale(1.1);
+}
+.chatbot-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: #fefefe;
+  background-color: #002d6f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(14, 14, 14, 0.3);
+  transition: transform 0.2s;
+  z-index: 1000;
+}
+
+.chatbot-btn:hover {
+  color: #fefdfd;
+  background-color: #0f61dd;
+  transform: scale(1.1);
+}
+
+.chatbot-btn:active {
+  color: #ffffff;
+  background-color: #0d58ca;
+  transition: border-color 0.3s;
+}
+
+.chatbot-btn img {
+  width: 60%;
+  height: 60%;
+}

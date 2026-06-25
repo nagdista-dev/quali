@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
+
+/* الترويسة (العنوان + الأيقونة) */
+.colleges-header1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-title1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.filter-btn1 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-btn1:hover {
+  color: #374151;
+}
+
+/* حاوية الجدول (الإطار الخارجي) */
+.table-wrapper1 {
+  border: 1px solid #b3bad0; /* لون الإطار الأزرق الفاتح */
+  border-radius: 12px;
+  overflow: hidden; /* للحفاظ على انحناء الزوايا */
+  background-color: #ffffff;
+}
+
+.colleges-table1 {
+  width: 100%;
+  border-collapse: collapse;
+  /* text-align: center; */
+}
+
+/* تنسيق الخلايا (رأس الجدول ومحتواه) */
+.colleges-table1 th,
+.colleges-table1 td {
+  padding: 16px 24px; /* قمت بزيادة الحواف الجانبية قليلاً لشكل أفضل */
+  border-bottom: 1px solid #e5e7eb;
+  text-align: right; /* هذه الإضافة ستجعل المحاذاة لليمين */
+}
+
+.colleges-table1 tr:last-child td {
+  border-bottom: none; /* إزالة الخط من الصف الأخير */
+}
+
+/* رأس الجدول */
+.colleges-table1 th {
+  font-weight: 700;
+  color: #111827;
+  font-size: 16px;
+}
+
+/* نصوص الجدول */
+.colleges-table1 td {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.college-name1 {
+  color: #6b7280;
+}
+
+.college-entity1 {
+  color: #6b7280;
+}
+
+/* عمود التاريخ والوقت */
+.college-date1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #6b7280;
+}
+
+.time-text {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* عمود الحالة والنقطة الملونة */
+.status-container1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+.status-text1 {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.status-dot9 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  justify-content: flex-start;
+}
+
+/* ألوان نقاط الحالة */
+.status-dot9.green {
+  background-color: #10b981; /* أخضر */
+}
+
+.status-dot9.red {
+  background-color: #ef4444; /* أحمر */
+}
+
+.status-dot9.yellow {
+  background-color: #eab308; /* أصفر */
+}
+.colleges-table1 th:nth-child(3),
+.colleges-table1 td:nth-child(3),
+.colleges-table1 th:nth-child(4),
+.colleges-table1 td:nth-child(4) {
+  text-align: center;
+}

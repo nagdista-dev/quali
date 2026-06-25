@@ -1,0 +1,88 @@
+.topbar {
+  position: fixed;
+  top: 20px;
+  right: 280px;
+  left: 20px;
+  height: 60px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+/* تنسيق حاوية المستخدم واللينك */
+.user-profile-link {
+  display: flex;
+  align-items: center;
+  gap: 29px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.avatar {
+  width: 59px;
+  height: 59px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatar-icon {
+  width: 45px;
+  height: 45px;
+  color: #e0e0e0;
+  border-radius: 90%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+/* تنسيق النصوص لتكون فوق بعض */
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.5;
+}
+
+.username {
+  font-weight: bold;
+  color: #002d6f;
+  font-size: 14px;
+}
+
+.role {
+  font-size: 12px;
+  color: #777;
+  margin-top: 2px;
+}
+
+/* تنسيق البحث والاشعارات (باقي كودك كما هو) */
+.search-input-wrapper {
+  position: relative;
+  width: 300px;
+}
+
+.search-input-wrapper input {
+  width: 100%;
+  padding: 10px 40px 10px 12px;
+  border-radius: 30px;
+  border: 1px solid #002d6f;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px; /* وضع الأيقونة على اليمين لتناسب العربي */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #002d6f;
+}
+
+.notifications {
+  font-size: 22px;
+}

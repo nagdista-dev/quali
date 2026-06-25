@@ -1,0 +1,205 @@
+/* استيراد خط عربي مشابه للصورة */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap");
+
+:root {
+  --primary-blue: #0b2559; /* اللون الأزرق الغامق للكارت */
+  --light-bg: #f8f9fa;
+  --success: #28a745;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --text-gray: #666;
+}
+
+/* --- الصف العلوي: البانر والشارت الخطي --- */
+.top-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.blue-banner {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-content h2 {
+  margin: 0 0 15px 0;
+  font-size: 24px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.check-icon {
+  background: #00c853;
+  border-radius: 4px;
+  padding: 1px;
+}
+
+.start-btn {
+  background: white;
+  color: var(--primary-blue);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Cairo", sans-serif;
+}
+
+.college-logo-container {
+  width: 120px;
+  height: 120px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.college-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* الشارت الخطي */
+.line-chart-container {
+  padding: 10px;
+}
+.chart-title {
+  text-align: right;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* --- بطاقات الحالة (Cards) --- */
+.status-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card.green {
+  border-bottom: 3px solid var(--success);
+  border-color: var(--success);
+}
+.card.yellow {
+  border-bottom: 3px solid var(--warning);
+  border-color: var(--warning);
+}
+.card.red {
+  border-bottom: 3px solid var(--danger);
+  border-color: var(--danger);
+}
+
+/* --- القسم السفلي: الجدول والشارت العمودي --- */
+.bottom-section6 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.chart-box,
+.table-box6 {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-title6 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* الجدول */
+.custom-table6 {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table-box6 {
+  border: 1px solid #ced4da; /* Border styling like screenshot */
+}
+
+.custom-table6 th {
+  text-align: right;
+  padding: 12px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+.custom-table6 td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+
+.date-cell {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+}
+
+.date-cell span:last-child {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .top-section,
+  .status-cards,
+  .bottom-section {
+    grid-template-columns: 1fr;
+  }
+}
