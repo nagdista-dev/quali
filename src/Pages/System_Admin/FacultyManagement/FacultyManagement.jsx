@@ -20,9 +20,12 @@ export default function FacultyManagement() {
         const res = await axios.get(
           "https://qualefai.runasp.net/api/Colleges",
           {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
         );
+
         setData(res.data);
       } catch (err) {
         console.log(err);
@@ -30,7 +33,7 @@ export default function FacultyManagement() {
     };
 
     fetchColleges();
-  }, [token]); // 👈 مهم
+  }, [token]);
 
   return (
     <div className="college-root">
@@ -67,7 +70,16 @@ export default function FacultyManagement() {
                 <td>{item.institutionType}</td>
                 <td>{item.accreditationType}</td>
                 <td>
-                  <span style={{ background: s.bg, color: s.color }}>
+                  <span
+                    style={{
+                      background: s.bg,
+                      color: s.color,
+                      padding: "6px 14px",
+                      borderRadius: "14px",
+                      display: "inline-block",
+                      fontWeight: "600",
+                    }}
+                  >
                     ● {item.status}
                   </span>
                 </td>

@@ -205,11 +205,13 @@
 }
 
 .btn-cancel {
-  background: #e5e7eb;
-  border: none;
-  padding: 8px 18px;
-  border-radius: 6px;
-  cursor: pointer;
+  background-color: #2563eb !important;
+  color: white !important;
+  border: none !important;
+}
+
+.btn-cancel:hover {
+  background-color: #1d4ed8 !important;
 }
 
 .btn-confirm {
@@ -219,4 +221,10 @@
   padding: 8px 18px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.btn-confirm:hover {
+  background: #ff6769;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(162, 5, 36, 0.3);
 }
