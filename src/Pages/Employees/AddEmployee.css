@@ -1,20 +1,27 @@
 .breadcrumb1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 60px;
+  font-size: 20px;
   font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 30px;
   color: #000;
-  text-align: right;
+  direction: rtl;
+}
+
+.breadcrumb1 span {
+  display: inline-block;
 }
 
 .breadcrumb1 .separator {
-  font-size: 24px;
-  margin: 0 8px;
+  font-size: 30px;
   color: #a7a2a2;
 }
 
 .breadcrumb1 .current {
-  font-weight: 700;
   color: #000;
+  font-weight: 700;
 }
 
 .form-container {
@@ -34,8 +41,9 @@
 }
 
 .input-group1 label {
-  margin-bottom: 8px;
+  margin-bottom: 18px;
   font-weight: 400;
+  font-size: 17px;
   color: #0d0d0d;
 }
 
@@ -55,26 +63,65 @@
   border-color: #0546a9;
 }
 
-.submit-btn1 {
+.password-wrapper {
+  position: relative;
   width: 100%;
-  padding: 14px 20px;
-  background-color: #002d6f;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-left: 45px;
+}
+
+.password-eye {
+  position: absolute;
+  left: 15px; /* العين على الشمال */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+  font-size: 18px;
+  transition: color 0.2s;
+}
+
+.password-eye:hover {
+  color: #002d6f;
+}
+
+.submit-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.submit-btn2 {
+  width: 100%;
+  height: 56px;
+
+  background: #002d6f;
   color: #fff;
+
   border: none;
   border-radius: 10px;
-  cursor: pointer;
+
   font-size: 18px;
+  font-weight: 700;
+
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.3s;
+
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.submit-btn1:hover {
-  background-color: #0f61dd;
+.submit-btn2:hover {
+  background: #0f61dd;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(15, 97, 221, 0.3);
 }
-
 .error {
   color: rgb(254, 2, 2);
   font-size: 14px;
@@ -142,7 +189,7 @@
 }
 
 .success-modal button:hover {
-  background-color: #004bb5;
+  background-color: #257bf3;
 }
 
 /* Animation */

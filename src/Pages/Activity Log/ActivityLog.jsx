@@ -116,7 +116,7 @@ export default function ActivityLog() {
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
             >
-              <FontAwesomeIcon icon={faArrowLeft} /> السابق
+              <FontAwesomeIcon icon={faArrowRight} /> السابق
             </button>
 
             <span>
@@ -129,7 +129,7 @@ export default function ActivityLog() {
               }
               disabled={currentPage === totalPages}
             >
-              التالي <FontAwesomeIcon icon={faArrowRight} />
+              التالي <FontAwesomeIcon icon={faArrowLeft} />
             </button>
           </div>
         )}

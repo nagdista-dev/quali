@@ -122,11 +122,12 @@ body {
 
 /* --- منطقة الإدخال السفلية --- */
 .input-area {
-  background-color: #0c2d64; /* الأزرق الداكن */
+  background-color: #0c2d64;
   padding: 15px;
   display: flex;
   align-items: center;
   gap: 15px;
+  direction: rtl; /* ✅ تأكد من RTL */
 }
 
 .send-btn {
@@ -137,13 +138,12 @@ body {
   border-radius: 50%;
   display: flex;
   align-items: center;
-  margin-right: -5px; /* تقريب الزر من حقل الكتابة قليلاً */
-  transition: all 0.3s ease; /* إضافة تأثير انتقالي سلس */
+  transition: all 0.3s ease;
 }
 
 .send-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* تغيير اللون عند الوقوف */
-  transform: scale(1.1); /* تكبير الزر قليلاً */
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }
 
 .input-wrapper {
@@ -172,7 +172,7 @@ body {
 
 .extra-icons {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -212,7 +212,7 @@ body {
 .attach-menu {
   position: absolute;
   bottom: 80px;
-  right: 60px; /* تظهر فوق زر الزائد */
+  left: 10px; /* تظهر فوق زر الزائد */
   background-color: white;
   border-radius: 10px;
   padding: 10px;

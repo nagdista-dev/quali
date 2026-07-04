@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
+import axios from "axios";
 import {
   BarChart,
   Bar,
@@ -10,18 +11,28 @@ import {
   PieChart,
   Pie,
   Cell,
-  Legend
 } from "recharts";
 import { CheckCircle, Bell, FileText, Landmark } from "lucide-react";
 import checkImage from "../../../assets/check.png";
 import "./Employee_DashBoard.css";
+const BASE_URL = "https://qualefai.runasp.net";
 
 const Employee_DashBoard = () => {
-  // --- Data ---
+  const token = localStorage.getItem("token");
+
+  const headers = useMemo(
+    () => ({
+      Authorization: `Bearer ${token}`,
+    }),
+    [token],
+  );
+
+  // ---------------- Charts ----------------
   const pieData = [
     { name: "نسبة الكليات المعتمدة", value: 72 },
     { name: "نسبة الكليات الغير معتمدة", value: 28 },
   ];
+
   const PIE_COLORS = ["#0b2559", "#00d2ff"];
 
   const complianceData = [
@@ -31,17 +42,80 @@ const Employee_DashBoard = () => {
     { name: "كلية الحاسبات", value: 65 },
   ];
 
-  const notificationsList = [
-    { id: 1, title: "مساحة التخزين المتوفرة على وشك النفاد..", date: "اليوم 12:45 مساءا", desc: "تم تحديث اسم الملف في الإصدار الأخير بواسطة أحمد علي" },
-    { id: 2, title: "مساحة التخزين المتوفرة على وشك النفاد..", date: "اليوم 10:15 صباحا", desc: "تم تحديث اسم الملف في الإصدار الأخير بواسطة أحمد علي" },
-    { id: 3, title: "مساحة التخزين المتوفرة على وشك النفاد..", date: "اليوم 08:30 صباحا", desc: "تم تحديث اسم الملف في الإصدار الأخير بواسطة أحمد علي" },
-    { id: 4, title: "مساحة التخزين المتوفرة على وشك النفاد..", date: "الأمس 11:45 مساءا", desc: "تم تحديث اسم الملف في الإصدار الأخير بواسطة أحمد علي" },
-    { id: 5, title: "مساحة التخزين المتوفرة على وشك النفاد..", date: "الأمس 09:15 صباحا", desc: "تم تحديث اسم الملف في الإصدار الأخير بواسطة أحمد علي" },
-  ];
+  // ---------------- Notifications ----------------
+  const [notificationsList, setNotificationsList] = useState([]);
+  const [unreadCount, setUnreadCount] = useState(0);
 
+  const fetchNotifications = useCallback(async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/api/Notification`, { headers });
+
+      setNotificationsList(res.data || []);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [headers]);
+
+  const fetchUnreadCount = useCallback(async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/api/Notification/unread-count`, {
+        headers,
+      });
+
+      setUnreadCount(res.data.unreadCount);
+    } catch (err) {
+      console.error(err);
+    }
+  }, [headers]);
+
+  useEffect(() => {
+    fetchNotifications();
+    fetchUnreadCount();
+  }, [fetchNotifications, fetchUnreadCount]);
+
+  const markAllRead = async () => {
+    try {
+      await axios.put(
+        `${BASE_URL}/api/Notification/mark-all-read`,
+        {},
+        { headers },
+      );
+
+      setUnreadCount(0);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  const [reports, setReports] = useState([]);
+
+  useEffect(() => {
+    const fetchReports = async () => {
+      try {
+        const res = await axios.get(`${BASE_URL}/api/Reports/all`, { headers });
+
+        // تحويل كل التقارير من كل الكليات إلى Array واحدة
+        const allReports = res.data.flatMap((college) =>
+          college.reports.map((report) => ({
+            ...report,
+            collegeName: college.collegeName,
+          })),
+        );
+
+        // ترتيب من الأحدث للأقدم
+        allReports.sort(
+          (a, b) => new Date(b.uploadedAt) - new Date(a.uploadedAt),
+        );
+
+        setReports(allReports);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchReports();
+  }, [headers]);
   return (
     <div className="ed-container" dir="rtl">
-      
       {/* --- Top Section --- */}
       <div className="ed-top-section">
         {/* Right: Pie Chart (First in DOM = Right in RTL) */}
@@ -51,7 +125,10 @@ const Employee_DashBoard = () => {
             <div className="ed-pie-legend">
               {pieData.map((entry, index) => (
                 <div key={index} className="ed-legend-item">
-                  <span className="ed-legend-color" style={{ backgroundColor: PIE_COLORS[index] }}></span>
+                  <span
+                    className="ed-legend-color"
+                    style={{ backgroundColor: PIE_COLORS[index] }}
+                  ></span>
                   <span className="ed-legend-text">{entry.name}</span>
                 </div>
               ))}
@@ -68,7 +145,10 @@ const Employee_DashBoard = () => {
                   stroke="none"
                 >
                   {pieData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={PIE_COLORS[index % PIE_COLORS.length]}
+                    />
                   ))}
                 </Pie>
                 <Tooltip />
@@ -82,10 +162,38 @@ const Employee_DashBoard = () => {
           <div className="ed-banner-content">
             <h2>الجودة للجميع</h2>
             <ul className="ed-features-list">
-              <li><CheckCircle size={16} color="#00ff00" className="ed-check-icon" /> رفع مستوى الأداء عبر كل مستوى</li>
-              <li><CheckCircle size={16} color="#00ff00" className="ed-check-icon" /> تعزيز ثقافة التحسين</li>
-              <li><CheckCircle size={16} color="#00ff00" className="ed-check-icon" /> المستمر لتمكين الأفراد من تقديم التميز</li>
-              <li><CheckCircle size={16} color="#00ff00" className="ed-check-icon" /> بناء الثقة من خلال الوضوح والنزاهة</li>
+              <li>
+                <CheckCircle
+                  size={16}
+                  color="#00ff00"
+                  className="ed-check-icon"
+                />{" "}
+                رفع مستوى الأداء عبر كل مستوى
+              </li>
+              <li>
+                <CheckCircle
+                  size={16}
+                  color="#00ff00"
+                  className="ed-check-icon"
+                />{" "}
+                تعزيز ثقافة التحسين
+              </li>
+              <li>
+                <CheckCircle
+                  size={16}
+                  color="#00ff00"
+                  className="ed-check-icon"
+                />{" "}
+                المستمر لتمكين الأفراد من تقديم التميز
+              </li>
+              <li>
+                <CheckCircle
+                  size={16}
+                  color="#00ff00"
+                  className="ed-check-icon"
+                />{" "}
+                بناء الثقة من خلال الوضوح والنزاهة
+              </li>
             </ul>
             <button className="ed-start-btn">ابدأ رحلتك الجيدة</button>
           </div>
@@ -102,7 +210,7 @@ const Employee_DashBoard = () => {
             <FileText size={20} color="#0b2559" />
             <span>تقارير جديدة</span>
           </div>
-          <div className="ed-stat-value">+10</div>
+          <div className="ed-stat-value">+{reports.length}</div>{" "}
         </div>
 
         <div className="ed-card ed-stat-card">
@@ -110,7 +218,7 @@ const Employee_DashBoard = () => {
             <Bell size={20} color="#0b2559" />
             <span>اشعارات جديدة</span>
           </div>
-          <div className="ed-stat-value">+10</div>
+          <div className="ed-stat-value">+{unreadCount}</div>{" "}
         </div>
 
         <div className="ed-card ed-stat-card">
@@ -128,11 +236,26 @@ const Employee_DashBoard = () => {
         <div className="ed-card ed-bar-card">
           <h3 className="ed-card-title">الامتثال للجودة</h3>
           <ResponsiveContainer width="100%" height={250}>
-            <BarChart data={complianceData} barSize={35} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
+            <BarChart
+              data={complianceData}
+              barSize={35}
+              margin={{ top: 20, right: 0, left: 0, bottom: 0 }}
+            >
               <CartesianGrid strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="name" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} />
-              <YAxis orientation="right" tick={{ fontSize: 12, fill: '#666' }} axisLine={false} tickLine={false} domain={[0, 100]} />
-              <Tooltip cursor={{ fill: '#f4f6fb' }} />
+              <XAxis
+                dataKey="name"
+                tick={{ fontSize: 12, fill: "#666" }}
+                axisLine={false}
+                tickLine={false}
+              />
+              <YAxis
+                orientation="right"
+                tick={{ fontSize: 12, fill: "#666" }}
+                axisLine={false}
+                tickLine={false}
+                domain={[0, 100]}
+              />
+              <Tooltip cursor={{ fill: "#f4f6fb" }} />
               <Bar dataKey="value" fill="#0b2559" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
@@ -140,22 +263,51 @@ const Employee_DashBoard = () => {
 
         {/* Left: Notifications List */}
         <div className="ed-card ed-notifications-card">
-          <h3 className="ed-card-title ed-align-center">الاشعارات</h3>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <h3 className="ed-card-title ed-align-center">
+              الاشعارات
+              {unreadCount > 0 && (
+                <span className="ed-unread-badge">{unreadCount}</span>
+              )}
+            </h3>
+
+            <button onClick={markAllRead}>تحديد الكل كمقروء</button>
+          </div>
+
           <div className="ed-notifications-list">
-            {notificationsList.map((item) => (
-              <div key={item.id} className="ed-notification-item">
-                <div className="ed-notif-dot"></div>
-                <div className="ed-notif-content">
-                  <h4>{item.title}</h4>
-                  <p>{item.desc}</p>
-                </div>
-                <div className="ed-notif-date">{item.date}</div>
-              </div>
-            ))}
+            {notificationsList.length === 0 ? (
+              <p className="ed-no-notifications">لا توجد إشعارات</p>
+            ) : (
+              notificationsList
+                .sort((a, b) => b.id - a.id)
+                .slice(0, 5)
+                .map((item) => (
+                  <div
+                    key={item.id}
+                    className={`ed-notification-item ${
+                      !item.isRead ? "ed-unread" : ""
+                    }`}
+                  >
+                    <div className="ed-notif-dot"></div>
+
+                    <div className="ed-notif-content">
+                      <h4>{item.title}</h4>
+                      <p>{item.message}</p>
+                    </div>
+
+                    <div className="ed-notif-date">{item.createdAt}</div>
+                  </div>
+                ))
+            )}
           </div>
         </div>
       </div>
-
     </div>
   );
 };

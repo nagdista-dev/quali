@@ -10,8 +10,12 @@ const Role = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
     axios
-      .get("https://qualefai.runasp.net/api/Roles")
+      .get("https://qualefai.runasp.net/api/Roles", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         setRoles(res.data);
         setLoading(false);

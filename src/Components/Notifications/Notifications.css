@@ -122,3 +122,69 @@
 .chatbot-btn:active {
   background-color: #0d58ca;
 }
+.notifications-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.unread-count {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.notification-item {
+  position: relative;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 12px;
+  background: #fff;
+}
+
+.notification-item.unread {
+  background: #f8fafc;
+  border-right: 4px solid #0c2d64;
+}
+
+.notification-title {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.notification-message {
+  margin: 0 0 8px;
+  color: #475569;
+}
+
+.notification-time {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.mark-all-btn {
+  background: #0c2d64;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.mark-all-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

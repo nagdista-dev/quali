@@ -34,8 +34,12 @@ export default function EmployeeBox() {
 
   // 🔹 جلب الموظفين
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
     axios
-      .get("https://qualefai.runasp.net/api/Employee")
+      .get("https://qualefai.runasp.net/api/Employee", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
         let employees = response.data;
 
@@ -65,8 +69,11 @@ export default function EmployeeBox() {
   // 🔹 تنفيذ الحذف
   const handleDeleteEmployee = async () => {
     try {
+      const token = localStorage.getItem("token");
+
       await axios.delete(
-        `https://qualifai.runasp.net/api/Employee/${selectedId}`,
+        `https://qualefai.runasp.net/api/Employee/${selectedId}`,
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       setData((prev) => prev.filter((emp) => emp.employeeId !== selectedId));
       showToast("تم حذف الموظف بنجاح ✅", "success");

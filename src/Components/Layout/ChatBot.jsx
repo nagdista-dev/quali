@@ -33,13 +33,16 @@ const ChatBot = () => {
   // 2. Fetch messages for the active college
   const fetchMessages = async (collegeId) => {
     try {
-      const res = await axios.get(`https://qualefai.runasp.net/api/Chat/${collegeId}/messages`, { headers });
+      const res = await axios.get(
+        `https://qualefai.runasp.net/api/Chat/${collegeId}/messages`,
+        { headers },
+      );
       const fetchedMessages = res.data.map((msg) => ({
         id: msg.id,
         sender: msg.senderId === activeCollege?.receiverId ? "bot" : "user",
         text: msg.content || msg.message,
         type: msg.fileUrl ? "image" : "text",
-        fileUrl: msg.fileUrl
+        fileUrl: msg.fileUrl,
       }));
       setMessages(fetchedMessages);
     } catch (error) {
@@ -51,7 +54,10 @@ const ChatBot = () => {
   useEffect(() => {
     const fetchCollegesAndMessages = async () => {
       try {
-        const res = await axios.get("https://qualefai.runasp.net/api/Chat/colleges", { headers });
+        const res = await axios.get(
+          "https://qualefai.runasp.net/api/Chat/colleges",
+          { headers },
+        );
         const colleges = res.data;
         if (colleges && colleges.length > 0) {
           const firstCollege = colleges[0];
@@ -65,7 +71,7 @@ const ChatBot = () => {
               sender: "bot",
               text: "مرحباً! لا توجد جهات اتصال متاحة حالياً للمراسلة.",
               type: "text",
-            }
+            },
           ]);
         }
       } catch (error) {
@@ -77,7 +83,7 @@ const ChatBot = () => {
             sender: "bot",
             text: "مرحباً، كيف يمكنني مساعدتك؟",
             type: "text",
-          }
+          },
         ]);
       }
     };
@@ -105,7 +111,10 @@ const ChatBot = () => {
       const formData = new FormData();
       formData.append("Content", currentInput);
       if (activeCollege) {
-        formData.append("CollegeId", activeCollege.id || activeCollege.collegeId || 1);
+        formData.append(
+          "CollegeId",
+          activeCollege.id || activeCollege.collegeId || 1,
+        );
         formData.append("ReceiverId", activeCollege.receiverId || 1);
       } else {
         // Dummy fallback values if no active college
@@ -152,19 +161,26 @@ const ChatBot = () => {
         formData.append("Content", file.name);
         formData.append("file", file);
         if (activeCollege) {
-          formData.append("CollegeId", activeCollege.id || activeCollege.collegeId || 1);
+          formData.append(
+            "CollegeId",
+            activeCollege.id || activeCollege.collegeId || 1,
+          );
           formData.append("ReceiverId", activeCollege.receiverId || 1);
         } else {
           formData.append("CollegeId", 1);
           formData.append("ReceiverId", 1);
         }
 
-        await axios.post("https://qualefai.runasp.net/api/Chat/send", formData, {
-          headers: {
-            ...headers,
-            "Content-Type": "multipart/form-data",
+        await axios.post(
+          "https://qualefai.runasp.net/api/Chat/send",
+          formData,
+          {
+            headers: {
+              ...headers,
+              "Content-Type": "multipart/form-data",
+            },
           },
-        });
+        );
       } catch (error) {
         console.error("Error uploading file", error);
       }
@@ -175,12 +191,16 @@ const ChatBot = () => {
     <div className="main-container" dir="rtl">
       <div className="page-header">
         <h1>مساعدة</h1>
-        <p>نحن نقدم دعمًا موثوقًا وحلولًا مخصصة لضمان حل مشكلاتك بسرعة وكفاءة.</p>
+        <p>
+          نحن نقدم دعمًا موثوقًا وحلولًا مخصصة لضمان حل مشكلاتك بسرعة وكفاءة.
+        </p>
       </div>
 
       <div className="chat-interface">
         <div className="chat-header">
-          <span>{activeCollege ? activeCollege.name || "فريق الدعم" : "فريق الدعم"}</span>
+          <span>
+            {activeCollege ? activeCollege.name || "فريق الدعم" : "فريق الدعم"}
+          </span>
         </div>
 
         <div className="messages-area">
@@ -210,11 +230,18 @@ const ChatBot = () => {
           {showEmojiPicker && (
             <div className="emoji-picker-wrapper">
               <div className="emoji-header">
-                <span onClick={() => setShowEmojiPicker(false)} style={{ cursor: "pointer" }}>
+                <span
+                  onClick={() => setShowEmojiPicker(false)}
+                  style={{ cursor: "pointer" }}
+                >
                   <X size={16} />
                 </span>
               </div>
-              <EmojiPicker onEmojiClick={onEmojiClick} height={350} width="100%" />
+              <EmojiPicker
+                onEmojiClick={onEmojiClick}
+                height={350}
+                width="100%"
+              />
             </div>
           )}
 
@@ -237,6 +264,23 @@ const ChatBot = () => {
             accept="image/*"
           />
 
+          {/* ✅ زر الإرسال أول عنصر (يظهر على اليمين في RTL) */}
+          <button className="send-btn" onClick={handleSend}>
+            <Send size={24} color="#fff" />
+          </button>
+
+          {/* حقل الكتابة */}
+          <div className="input-wrapper">
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleSend()}
+              placeholder="اكتب رسالة..."
+            />
+          </div>
+
+          {/* ✅ الأيقونات الإضافية آخر عنصر (تظهر على اليسار في RTL) */}
           <div className="extra-icons">
             <div
               className="icon-btn"
@@ -258,20 +302,6 @@ const ChatBot = () => {
               <PlusCircle size={24} color="#fff" />
             </div>
           </div>
-
-          <div className="input-wrapper">
-            <input
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && handleSend()}
-              placeholder="اكتب رسالة..."
-            />
-          </div>
-
-          <button className="send-btn" onClick={handleSend}>
-            <Send size={24} color="#fff" />
-          </button>
         </div>
       </div>
     </div>
@@ -279,4 +309,3 @@ const ChatBot = () => {
 };
 
 export default ChatBot;
-

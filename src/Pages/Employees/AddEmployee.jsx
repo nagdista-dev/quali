@@ -1,6 +1,10 @@
 import "./AddEmployee.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserPlus,
+  faEye,
+  faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -21,10 +25,16 @@ export default function EmployeeForm() {
   const [roles, setRoles] = useState([]);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
+
   // =================== Load Roles from API =================== //
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
     axios
-      .get("https://qualefai.runasp.net/api/Roles")
+      .get("https://qualefai.runasp.net/api/Roles", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => setRoles(res.data))
       .catch(() => console.log("خطأ في تحميل الأدوار"));
   }, []);
@@ -84,7 +94,11 @@ export default function EmployeeForm() {
         roleId: selectedRole?.roleId,
       };
 
-      await axios.post("https://qualefai.runasp.net/api/Employee", payload);
+      const token = localStorage.getItem("token");
+
+      await axios.post("https://qualefai.runasp.net/api/Employee", payload, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       // ✅ Show Success Modal
       setShowSuccessModal(true);
@@ -112,7 +126,7 @@ export default function EmployeeForm() {
   return (
     <div className="form-container">
       <div className="breadcrumb1">
-        <span className="current">موظف</span>
+        <span className="current">الموظفين</span>
         <span className="separator">›</span>
         <span className="current">إضافة موظف جديد</span>
       </div>
@@ -156,22 +170,28 @@ export default function EmployeeForm() {
             <input
               type="email"
               name="email"
-              placeholder="User@gmail.com"
+              placeholder="User@gmail.com" // ✅ غير الـ placeholder
               value={formData.email}
               onChange={handleChange}
             />
             {errors.email && <span className="error">{errors.email}</span>}
           </div>
-
           <div className="input-group1">
             <label>كلمة المرور</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="********"
-              value={formData.password}
-              onChange={handleChange}
-            />
+            <div className="password-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="********" // ✅ غير الـ placeholder
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <FontAwesomeIcon
+                icon={showPassword ? faEyeSlash : faEye}
+                className="password-eye"
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            </div>
             {errors.password && (
               <span className="error">{errors.password}</span>
             )}
@@ -215,10 +235,12 @@ export default function EmployeeForm() {
           </div>
         </div>
 
-        <button className="submit-btn1" type="submit">
-          إضافة موظف&nbsp;
-          <FontAwesomeIcon icon={faUserPlus} />
-        </button>
+        <div className="submit-wrapper">
+          <button className="submit-btn2" type="submit">
+            إضافة موظف
+            <FontAwesomeIcon icon={faUserPlus} />
+          </button>
+        </div>
       </form>
 
       {/* ✅ Success Modal */}

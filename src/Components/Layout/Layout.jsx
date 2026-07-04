@@ -3,7 +3,7 @@ import TopBar from "./TopBar";
 import "./Layout.css";
 import { Outlet } from "react-router-dom";
 
-const Layout = ({ user, setUser }) => {
+const Layout = ({ user }) => {
   return (
     <div className="layout">
       <Sidebar />

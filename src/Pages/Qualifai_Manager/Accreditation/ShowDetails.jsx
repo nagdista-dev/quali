@@ -72,8 +72,33 @@ const ShowDetails = () => {
   };
 
   useEffect(() => {
-    if (divisionId) fetchFiles();
-  }, [divisionId]);
+    if (!divisionId) return;
+
+    const loadFiles = async () => {
+      try {
+        const res = await api.get(`/Accreditation/sections/${divisionId}`);
+
+        const docs = res.data.documents || [];
+        const currentYear = new Date().getFullYear();
+
+        const formattedDocs = docs.map((doc) => ({
+          id: doc.requiredDocumentId,
+          title: doc.documentName,
+          years: [currentYear - 2, currentYear - 1, currentYear],
+          deadline: doc.deadline
+            ? new Date(doc.deadline).toLocaleDateString("en-GB")
+            : null,
+        }));
+
+        setFiles(formattedDocs);
+        setSectionName(res.data.sectionName);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    loadFiles();
+  }, [divisionId, api]);
 
   // ======================
   // Open Calendar
@@ -134,6 +159,9 @@ const ShowDetails = () => {
     navigate("/YearDetails", {
       state: {
         fileTitle: file.title,
+        requiredDocumentId: file.id,
+        sectionId: divisionId,
+        sectionName,
         year: year,
       },
     });

@@ -26,8 +26,12 @@ export default function EmployeeProfile() {
 
   // ✅ تحميل بيانات الموظف
   useEffect(() => {
+    const token = localStorage.getItem("token");
+
     axios
-      .get("https://qualefai.runasp.net/api/Employee")
+      .get("https://qualefai.runasp.net/api/Employee", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         const emp = res.data.find((e) => e.employeeId == id);
 
@@ -73,15 +77,21 @@ export default function EmployeeProfile() {
 
   // ✅ حفظ التعديلات
   const handleSave = () => {
+    const token = localStorage.getItem("token");
+
     axios
-      .put(`https://qualefai.runasp.net/api/Employee/${id}`, {
-        employeeId: formData.employeeId,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        password: formData.password,
-        roleId: getRoleId(formData.role),
-      })
+      .put(
+        `https://qualefai.runasp.net/api/Employee/${id}`,
+        {
+          employeeId: formData.employeeId,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          password: formData.password,
+          roleId: getRoleId(formData.role),
+        },
+        { headers: { Authorization: `Bearer ${token}` } },
+      )
       .then(() => {
         alert("تم حفظ التعديلات بنجاح! ✅");
       })

@@ -1,6 +1,14 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import axios from "axios";
-import { Send, ArrowLeft, Smile, Search, MoreVertical, Paperclip, PlusCircle } from "lucide-react";
+import {
+  Send,
+  ArrowLeft,
+  Smile,
+  Search,
+  MoreVertical,
+  Paperclip,
+  PlusCircle,
+} from "lucide-react";
 import EmojiPicker from "emoji-picker-react";
 import "./ContactingColleges.css";
 
@@ -17,15 +25,20 @@ export default function ContactingColleges() {
   const messagesEndRef = useRef(null);
   const token = localStorage.getItem("token");
 
-  const headers = useMemo(() => ({
-    Authorization: `Bearer ${token}`,
-  }), [token]);
+  const headers = useMemo(
+    () => ({
+      Authorization: `Bearer ${token}`,
+    }),
+    [token],
+  );
 
   // Fetch college list
   useEffect(() => {
     const fetchColleges = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/api/Chat/colleges`, { headers });
+        const res = await axios.get(`${BASE_URL}/api/Chat/colleges`, {
+          headers,
+        });
         setColleges(res.data || []);
       } catch (err) {
         console.error("Error fetching colleges", err);
@@ -41,7 +54,10 @@ export default function ContactingColleges() {
       setLoading(true);
       try {
         const collegeId = selectedCollege.id || selectedCollege.collegeId;
-        const res = await axios.get(`${BASE_URL}/api/Chat/${collegeId}/messages`, { headers });
+        const res = await axios.get(
+          `${BASE_URL}/api/Chat/${collegeId}/messages`,
+          { headers },
+        );
         const mapped = (res.data || []).map((msg) => ({
           id: msg.id,
           sender: msg.isCurrentUser ? "me" : "them",
@@ -75,13 +91,24 @@ export default function ContactingColleges() {
     // Optimistic update
     setMessages((prev) => [
       ...prev,
-      { id: Date.now(), sender: "me", text, time: new Date().toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" }) },
+      {
+        id: Date.now(),
+        sender: "me",
+        text,
+        time: new Date().toLocaleTimeString("ar-EG", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      },
     ]);
 
     try {
       const formData = new FormData();
       formData.append("Content", text);
-      formData.append("CollegeId", selectedCollege.id || selectedCollege.collegeId || 1);
+      formData.append(
+        "CollegeId",
+        selectedCollege.id || selectedCollege.collegeId || 1,
+      );
       formData.append("ReceiverId", selectedCollege.receiverId || 1);
       await axios.post(`${BASE_URL}/api/Chat/send`, formData, {
         headers: { ...headers, "Content-Type": "multipart/form-data" },
@@ -98,7 +125,10 @@ export default function ContactingColleges() {
   const formatTime = (t) => {
     if (!t) return "";
     try {
-      return new Date(t).toLocaleTimeString("ar-EG", { hour: "2-digit", minute: "2-digit" });
+      return new Date(t).toLocaleTimeString("ar-EG", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
     } catch {
       return t;
     }
@@ -118,10 +148,17 @@ export default function ContactingColleges() {
             {/* Chat Header (LTR so Name is left, icons are right) */}
             <div className="cc-chat-header" dir="ltr">
               <div className="cc-chat-header-info">
-                <button className="cc-back-btn" onClick={() => setSelectedCollege(null)}>
+                <button
+                  className="cc-back-btn"
+                  onClick={() => setSelectedCollege(null)}
+                >
                   <ArrowLeft size={20} />
                 </button>
-                <span className="cc-chat-name">{selectedCollege.name || selectedCollege.collegeName || "الكلية"}</span>
+                <span className="cc-chat-name">
+                  {selectedCollege.name ||
+                    selectedCollege.collegeName ||
+                    "الكلية"}
+                </span>
               </div>
               <div className="cc-chat-header-actions">
                 <Paperclip size={20} color="#000" />
@@ -133,22 +170,39 @@ export default function ContactingColleges() {
             <div className="cc-messages-area">
               {loading && <div className="cc-loading">جاري التحميل...</div>}
               {!loading && messages.length === 0 && (
-                <div className="cc-no-messages">لا توجد رسائل بعد، ابدأ المحادثة!</div>
+                <div className="cc-no-messages">
+                  لا توجد رسائل بعد، ابدأ المحادثة!
+                </div>
               )}
               {messages.map((msg) => (
-                <div key={msg.id} className={`cc-msg-row ${msg.sender === "me" ? "cc-msg-me" : "cc-msg-them"}`}>
+                <div
+                  key={msg.id}
+                  className={`cc-msg-row ${msg.sender === "me" ? "cc-msg-me" : "cc-msg-them"}`}
+                >
                   {msg.sender === "them" && (
                     <div className="cc-avatar">
-                      <img src={selectedCollege.imageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(selectedCollege.name || "C")}&background=e0e7ff&color=0c2d64&size=40`} alt="avatar" />
+                      <img
+                        src={
+                          selectedCollege.imageUrl ||
+                          `https://ui-avatars.com/api/?name=${encodeURIComponent(selectedCollege.name || "C")}&background=e0e7ff&color=0c2d64&size=40`
+                        }
+                        alt="avatar"
+                      />
                     </div>
                   )}
                   <div className="cc-bubble">
                     {msg.fileUrl ? (
-                      <img src={msg.fileUrl} alt="file" className="cc-bubble-img" />
+                      <img
+                        src={msg.fileUrl}
+                        alt="file"
+                        className="cc-bubble-img"
+                      />
                     ) : (
                       <span>{msg.text}</span>
                     )}
-                    <span className="cc-bubble-time">{formatTime(msg.time)}</span>
+                    <span className="cc-bubble-time">
+                      {formatTime(msg.time)}
+                    </span>
                   </div>
                   {msg.sender === "me" && (
                     <div className="cc-avatar cc-avatar-me">
@@ -165,7 +219,9 @@ export default function ContactingColleges() {
               {showEmoji && (
                 <div className="cc-emoji-wrapper">
                   <EmojiPicker
-                    onEmojiClick={(e) => setInputValue((prev) => prev + e.emoji)}
+                    onEmojiClick={(e) =>
+                      setInputValue((prev) => prev + e.emoji)
+                    }
                     height={320}
                     width="100%"
                   />
@@ -185,7 +241,10 @@ export default function ContactingColleges() {
                 <Search size={16} className="cc-search-icon" />
               </div>
               <div className="cc-input-icons">
-                <button className="cc-icon-btn" onClick={() => setShowEmoji(!showEmoji)}>
+                <button
+                  className="cc-icon-btn"
+                  onClick={() => setShowEmoji(!showEmoji)}
+                >
                   <Smile size={22} color="#fff" />
                 </button>
                 <button className="cc-icon-btn">
@@ -207,10 +266,19 @@ export default function ContactingColleges() {
           {colleges.map((college) => {
             const id = college.id || college.collegeId;
             const name = college.name || college.collegeName || "كلية";
-            const sub = college.lastMessage || college.description || "Supporting line text lorem...";
-            const time = college.lastMessageTime ? formatTime(college.lastMessageTime) : "10 min";
-            const img = college.imageUrl || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=dbeafe&color=0c2d64&size=40`;
-            const isActive = selectedCollege && (selectedCollege.id || selectedCollege.collegeId) === id;
+            const sub =
+              college.lastMessage ||
+              college.description ||
+              "Supporting line text lorem...";
+            const time = college.lastMessageTime
+              ? formatTime(college.lastMessageTime)
+              : "10 min";
+            const img =
+              college.imageUrl ||
+              `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=dbeafe&color=0c2d64&size=40`;
+            const isActive =
+              selectedCollege &&
+              (selectedCollege.id || selectedCollege.collegeId) === id;
 
             return (
               <div

@@ -1,61 +1,86 @@
-// import { useEffect, useState } from "react";
 import axios from "axios";
 import "./Notifications.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
-import { useCallback, useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useCallback, useMemo } from "react";
 
 export default function Notifications() {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [unreadCount, setUnreadCount] = useState(0);
+
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
 
-  const headers = useMemo(() => {
-    return {
+  const headers = useMemo(
+    () => ({
       Authorization: `Bearer ${token}`,
-    };
-  }, [token]);
+    }),
+    [token],
+  );
 
   const API = "https://qualefai.runasp.net/api/Notification";
 
-  // 1️⃣ جلب الإشعارات
+  // Get Notifications
   const fetchNotifications = useCallback(async () => {
     try {
       const res = await axios.get(API, { headers });
-      setNotifications(res.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }, [API, headers]);
 
-  // 2️⃣ جلب unread count (لو عايزة تعرضيه في navbar)
+      console.log(res.data); // 👈 ضيفي السطر ده
+
+      setNotifications(res.data || []);
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+    }
+  }, [headers]);
+
+  // Get Unread Count
   const fetchUnreadCount = useCallback(async () => {
     try {
-      const res = await axios.get(`${API}/unread-count`, { headers });
-      localStorage.setItem("unreadCount", res.data.unreadCount);
-    } catch (error) {
-      console.error(error);
-    }
-  }, [API, headers]);
+      const res = await axios.get(`${API}/unread-count`, {
+        headers,
+      });
 
-  // 3️⃣ mark all as read
+      setUnreadCount(res.data.unreadCount || 0);
+      localStorage.setItem("unreadCount", res.data.unreadCount || 0);
+    } catch (error) {
+      console.error("Error fetching unread count:", error);
+    }
+  }, [headers]);
+
+  // Mark All Read
   const markAllAsRead = async () => {
     try {
-      await axios.put(`${API}/mark-all-read`, {}, { headers });
-      localStorage.setItem("unreadCount", 0);
-      fetchNotifications(); // refresh
+      await axios.put(
+        `${API}/mark-all-read`,
+        {},
+        {
+          headers,
+        },
+      );
+
+      setNotifications((prev) =>
+        prev.map((notification) => ({
+          ...notification,
+          isRead: true,
+        })),
+      );
+
+      setUnreadCount(0);
+      localStorage.setItem("unreadCount", "0");
     } catch (error) {
-      console.error(error);
+      console.error("Error marking notifications:", error);
     }
   };
 
   useEffect(() => {
     const loadData = async () => {
       setLoading(true);
+
       await Promise.all([fetchNotifications(), fetchUnreadCount()]);
+
       setLoading(false);
     };
 
@@ -65,33 +90,49 @@ export default function Notifications() {
   if (loading) {
     return <div className="loading">جاري تحميل الإشعارات...</div>;
   }
-
+  console.log("Notifications Page Rendered");
   return (
     <div className="gray-container">
       <div className="white-container">
-        <h2 className="title">الإشعارات</h2>
+        <div className="notifications-header">
+          <h2 className="title">الإشعارات</h2>
 
-        {/* زرار مهم */}
-        <button className="mark-all-btn" onClick={markAllAsRead}>
-          تعيين الكل كمقروء
-        </button>
+          <span className="unread-count">غير المقروءة: {unreadCount}</span>
+
+          <button className="mark-all-btn" onClick={markAllAsRead}>
+            تعيين الكل كمقروء
+          </button>
+        </div>
 
         <div className="notifications-card">
-          {notifications.length === 0 && (
+          {notifications.length === 0 ? (
             <p className="no-data">لا توجد إشعارات حالياً</p>
-          )}
+          ) : (
+            notifications.map((item) => (
+              <div
+                key={item.id}
+                className={`notification-item ${!item.isRead ? "unread" : ""}`}
+              >
+                <div className="notification-content">
+                  <h3 className="notification-title">{item.title}</h3>
 
-          {notifications.map((item) => (
-            <div key={item.id} className="notification-item">
-              <h3>• {item.title}</h3>
-              <p>{item.description}</p>
-              <span>{item.time}</span>
-            </div>
-          ))}
+                  <p className="notification-message">{item.message}</p>
+
+                  <span className="notification-time">{item.createdAt}</span>
+                </div>
+
+                {!item.isRead && <div className="notification-dot"></div>}
+              </div>
+            ))
+          )}
         </div>
       </div>
 
-      <div className="chatbot-btn" onClick={() => navigate("/ChatBot")} style={{ cursor: "pointer" }}>
+      <div
+        className="chatbot-btn"
+        onClick={() => navigate("/ChatBot")}
+        style={{ cursor: "pointer" }}
+      >
         <FontAwesomeIcon icon={faRobot} />
       </div>
     </div>

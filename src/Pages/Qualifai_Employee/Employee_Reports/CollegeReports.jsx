@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSliders } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -21,49 +21,116 @@ const DownloadIcon = () => (
 );
 
 export default function CollegeReports() {
+  const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+
   const collegeName = location.state?.collegeName || "الكلية";
 
-  const [openId, setOpenId] = useState(null); // ✅ track الـ open
   const [reportsData, setReportsData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [openId, setOpenId] = useState(null);
 
   useEffect(() => {
     const fetchReports = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("https://qualefai.runasp.net/api/Reports/all", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+
+        const res = await axios.get(
+          `https://qualefai.runasp.net/api/Reports/college/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
-        setReportsData(res.data);
-      } catch (err) {
-        console.error(err);
+        );
+
+        setReportsData(res.data || []);
+      } catch (error) {
+        console.error("Error fetching reports:", error);
       } finally {
         setLoading(false);
       }
     };
-    fetchReports();
-  }, []);
 
-  const toggleReport = (id) => {
-    setOpenId(openId === id ? null : id); // ✅ لو مفتوح اقفله، لو مقفول افتحه
+    if (id) {
+      fetchReports();
+    }
+  }, [id]);
+
+  const toggleReport = (reportId) => {
+    setOpenId(openId === reportId ? null : reportId);
   };
+
+  const handleDownload = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(
+        `https://qualefai.runasp.net/api/Reports/college/${id}/download`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          responseType: "blob",
+        },
+      );
+
+      const blob = new Blob([response.data], {
+        type: "application/pdf",
+      });
+
+      const url = window.URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${collegeName}.pdf`;
+
+      document.body.appendChild(link);
+      link.click();
+
+      document.body.removeChild(link);
+
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download Error:", error);
+      alert("فشل تحميل التقرير");
+    }
+  };
+
+  const formatDate = (date) => {
+    if (!date) return "غير متوفر";
+
+    return new Date(date).toLocaleDateString("ar-EG", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
+  };
+
+  const filteredReports = reportsData.filter((report) =>
+    report.originalName?.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   return (
     <div className="college-reports-container">
-      {/* Breadcrumb */}
       {/* Header */}
       <div className="college-reports-header">
         <div className="college-breadcrumb">
-          <span className="breadcrumb-back" onClick={() => navigate(-1)}>
+          <span
+            className="breadcrumb-back"
+            onClick={() => navigate(-1)}
+            style={{ cursor: "pointer" }}
+          >
             التقارير السابقة
           </span>
+
           <span className="breadcrumb-sep">›</span>
+
           <span className="breadcrumb-current">{collegeName}</span>
         </div>
+
         <button className="college-filter-btn">
           <FontAwesomeIcon icon={faSliders} />
         </button>
@@ -74,8 +141,11 @@ export default function CollegeReports() {
         <input
           type="text"
           className="college-search-input"
-          placeholder="ابحث باسم الكلية"
+          placeholder="ابحث باسم التقرير"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
+
         <span className="college-search-icon">
           <svg
             width="16"
@@ -91,37 +161,73 @@ export default function CollegeReports() {
         </span>
       </div>
 
-      {/* Reports List */}
+      {/* Reports */}
       {loading ? (
-        <p style={{ textAlign: "center", marginTop: "20px" }}>جاري التحميل...</p>
+        <p style={{ textAlign: "center", marginTop: "30px" }}>
+          جاري التحميل...
+        </p>
+      ) : filteredReports.length === 0 ? (
+        <p
+          style={{
+            textAlign: "center",
+            marginTop: "30px",
+            color: "#64748b",
+          }}
+        >
+          لا توجد تقارير
+        </p>
       ) : (
         <div className="college-reports-list">
-          {reportsData.map((report) => (
+          {filteredReports.map((report) => (
             <div key={report.id} className="college-report-row">
               <div className="report-right">
-                {/* ✅ السهم يفتح ويقفل */}
                 <span
-                  className={`report-arrow ${openId === report.id ? "open" : ""}`}
+                  className={`report-arrow ${
+                    openId === report.id ? "open" : ""
+                  }`}
                   onClick={() => toggleReport(report.id)}
+                  style={{ cursor: "pointer" }}
                 >
                   ›
                 </span>
+
                 <div className="report-info">
-                  <span className="report-title">{report.title || "عنوان التقرير غير محدد"}</span>
-                  {/* ✅ التفاصيل تظهر بس لو مفتوح */}
+                  <span className="report-title">{report.originalName}</span>
+
                   {openId === report.id && (
-                    <p className="report-details">{report.details || "لا توجد تفاصيل"}</p>
+                    <div className="report-details">
+                      <p>
+                        <strong>اسم الكلية:</strong> {report.collegeName}
+                      </p>
+
+                      <p>
+                        <strong>رقم التقرير:</strong> {report.id}
+                      </p>
+
+                      <p>
+                        <strong>تاريخ الرفع:</strong>{" "}
+                        {formatDate(report.uploadedAt)}
+                      </p>
+                    </div>
                   )}
                 </div>
               </div>
 
               <div className="report-left">
                 <div className="report-date-wrapper">
-                  <span className="report-date-label">تاريخ الارسال</span>
-                  <span className="report-date">{report.date || report.createdAt || "غير محدد"}</span>
+                  <span className="report-date-label">تاريخ الرفع</span>
+
+                  <span className="report-date">
+                    {formatDate(report.uploadedAt)}
+                  </span>
                 </div>
-                <button className="report-download-btn">
-                  <DownloadIcon /> تحميل التقرير
+
+                <button
+                  className="report-download-btn"
+                  onClick={handleDownload}
+                >
+                  <DownloadIcon />
+                  تحميل التقرير
                 </button>
               </div>
             </div>
