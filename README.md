@@ -1,26 +1,26 @@
 # QualifAi
 
-نظام إدارة الاعتماد الأكاديمي للجامعات | University Accreditation Management System
+University Accreditation Management System
 
-مشروع تخرج يهدف إلى تسهيل عملية الاعتماد الأكاديمي من خلال منصة متكاملة تدير الملفات والمواعيد النهائية والتقارير.
+A graduation project that streamlines the university accreditation process through an integrated platform for managing documents, deadlines, and reports.
 
 ## Features
 
-- **Accreditation Management** – عرض وإدارة أقسام ومعايير الاعتماد الأكاديمي
-- **Document Tracking** – رفع وعرض الملفات المطلوبة لكل قسم
-- **Deadline Management** – تحديد المواعيد النهائية للمستندات مع تذكيرات
-- **Yearly Reports** – عرض تقارير تحليلية لكل سنة دراسية
-- **Role-based Access** – لوحات تحكم مختلفة للمدير والموظف وإدارة النظام
+- **Accreditation Management** – View and manage accreditation sections and standards
+- **Document Tracking** – Upload and track required documents for each section
+- **Deadline Management** – Set deadlines with reminders
+- **Yearly Reports** – View analytical reports per academic year
+- **Role-based Access** – Separate dashboards for managers, employees, and admins
 
 ## Tech Stack
 
-- **React 19** – واجهة المستخدم
-- **Vite 7** – أداة البناء
-- **React Router v7** – routing
-- **Axios** – HTTP requests
-- **Lucide React** / **FontAwesome** – أيقونات
-- **Recharts** – الرسوم البيانية
-- **React Calendar** – التقويم
+- **React 19** – UI framework
+- **Vite 7** – Build tool
+- **React Router v7** – Routing
+- **Axios** – HTTP client
+- **Lucide React** / **FontAwesome** – Icons
+- **Recharts** – Charts
+- **React Calendar** – Calendar picker
 
 ## Getting Started
 
@@ -29,13 +29,13 @@ npm install
 npm run dev
 ```
 
-المشروع شغال على `http://localhost:5173`
+Open `http://localhost:5173` in your browser.
 
 ## Scripts
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | تشغيل بيئة التطوير |
-| `npm run build` | بناء المشروع للإنتاج |
-| `npm run preview` | معاينة البناء |
-| `npm run lint` | فحص الكود |
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Lint the code |
