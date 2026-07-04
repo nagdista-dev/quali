@@ -10,6 +10,22 @@
   --text-gray: #666;
 }
 
+.dashboard-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dashboard-container::-webkit-scrollbar {
+  display: none;
+}
+
+.dashboard-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* --- الصف العلوي: البانر والشارت الخطي --- */
 .top-section {
   display: grid;
@@ -122,6 +138,8 @@
 .card h3 {
   margin: 0;
   font-size: 18px;
+  color: #1a1a1a;
+  font-weight: 700;
 }
 
 .card.green {
@@ -168,7 +186,16 @@
 }
 
 .table-box6 {
-  border: 1px solid #ced4da; /* Border styling like screenshot */
+  border: 1px solid #ced4da;
+}
+
+.table-box6::-webkit-scrollbar {
+  display: none;
+}
+
+.table-box6 {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .custom-table6 th {

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { FileText, Upload, CalendarDays, File } from "lucide-react";
 
 import "react-calendar/dist/Calendar.css";
 import "./ShowDetails.css";
@@ -181,34 +182,52 @@ const ShowDetails = () => {
         </div>
 
         {/* Files */}
-        <div className="main-card">
-          <div className="table-header">
-            <h3>الملفات المطلوبة</h3>
+        <div className="files-table">
+          <div className="table-head">
+            <div className="th-name">اسم الملف</div>
+            <div className="th-files">الملفات</div>
+            <div className="th-actions">الإجراءات</div>
           </div>
 
-          <div className="files-list">
+          <div className="table-body">
             {files.map((file) => (
-              <div key={file.id} className="file-row">
-                <div className="file-info">
+              <div key={file.id} className="table-row">
+                <div className="td-name">
+                  <FileText size={18} className="doc-icon" />
                   <span className="file-name">{file.title}</span>
+                </div>
 
-                  <div className="file-years">
+                <div className="td-files">
+                  <div className="years-group">
                     {file.years.map((year) => (
                       <div
                         key={year}
-                        className="file-icon clickable"
-                        onClick={() => handleYearClick(file, year)}
+                        className="file-badge"
                       >
-                        <span className="file-corner"></span>
-                        <span className="year-text">{year}</span>
+                        <div
+                          className="file-icon-wrap clickable"
+                          onClick={() => handleYearClick(file, year)}
+                        >
+                          <File size={46} className="file-icon-svg" fill="#0d2b5b" stroke="#0d2b5b" />
+                          <span className="badge-year">{year}</span>
+                          <button
+                            className="file-badge-x"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              // TODO: handle delete
+                            }}
+                          >
+                            ✕
+                          </button>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="file-actions">
+                <div className="td-actions">
                   <button
-                    className="btn btn-upload"
+                    className="action-btn upload-btn"
                     onClick={() =>
                       navigate("/UploadFiles", {
                         state: {
@@ -218,14 +237,15 @@ const ShowDetails = () => {
                       })
                     }
                   >
-                    + رفع الملفات
+                    <Upload size={16} />
+                    <span>رفع الملفات</span>
                   </button>
-
                   <button
-                    className="btn btn-deadline"
+                    className={`action-btn deadline-btn ${file.deadline ? "has-deadline" : ""}`}
                     onClick={() => openCalendar(file)}
                   >
-                    {file.deadline || "تحديد الموعد النهائي"}
+                    <CalendarDays size={16} />
+                    <span>{file.deadline || "الموعد النهائي"}</span>
                   </button>
                 </div>
               </div>
@@ -237,71 +257,81 @@ const ShowDetails = () => {
         {showCalendar && (
           <div className="modal-overlay">
             <div className="calendar-modal">
-              <button
-                className="close-x-btn"
-                onClick={() => setShowCalendar(false)}
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
+              <div className="modal-header">
+                <h3 className="modal-title">Set Deadline</h3>
+                <button
+                  className="close-x-btn"
+                  onClick={() => setShowCalendar(false)}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
+              </div>
 
-              <Calendar onChange={setTempDate} value={tempDate} />
+              <div className="modal-body">
+                <Calendar onChange={setTempDate} value={tempDate} />
 
-              <div className="calendar-footer-custom">
-                <div className="input-row">
-                  <label>Deadline</label>
-                  <input
-                    type="text"
-                    readOnly
-                    value={tempDate.toLocaleDateString("en-GB")}
-                  />
-                </div>
-
-                <div className="reminders-box">
-                  <div className="reminder-toggle">
-                    <span>Deadline Reminders</span>
-
-                    <label className="ios-switch">
-                      <input
-                        type="checkbox"
-                        checked={remindersActive}
-                        onChange={() => setRemindersActive(!remindersActive)}
-                      />
-                      <span className="slider-round"></span>
-                    </label>
+                <div className="calendar-footer-custom">
+                  <div className="input-row">
+                    <label>Deadline</label>
+                    <input
+                      type="text"
+                      readOnly
+                      value={tempDate.toLocaleDateString("en-GB")}
+                    />
                   </div>
 
-                  {remindersActive && (
-                    <div className="options-list">
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={weekBefore}
-                          onChange={() => setWeekBefore(!weekBefore)}
-                        />
-                        1 week before
-                      </label>
+                  <div className="reminders-box">
+                    <div className="reminder-toggle">
+                      <span>Deadline Reminders</span>
 
-                      <label>
+                      <label className="ios-switch">
                         <input
                           type="checkbox"
-                          checked={dayBefore}
-                          onChange={() => setDayBefore(!dayBefore)}
+                          checked={remindersActive}
+                          onChange={() => setRemindersActive(!remindersActive)}
                         />
-                        1 Day before
-                      </label>
-
-                      <label>
-                        <input
-                          type="checkbox"
-                          checked={onDueDate}
-                          onChange={() => setOnDueDate(!onDueDate)}
-                        />
-                        On due date
+                        <span className="slider-round"></span>
                       </label>
                     </div>
-                  )}
-                </div>
 
+                    {remindersActive && (
+                      <div className="options-list">
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={weekBefore}
+                            onChange={() => setWeekBefore(!weekBefore)}
+                          />
+                          1 week before
+                        </label>
+
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={dayBefore}
+                            onChange={() => setDayBefore(!dayBefore)}
+                          />
+                          1 Day before
+                        </label>
+
+                        <label>
+                          <input
+                            type="checkbox"
+                            checked={onDueDate}
+                            onChange={() => setOnDueDate(!onDueDate)}
+                          />
+                          On due date
+                        </label>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              <div className="modal-footer">
+                <button className="modal-cancel-btn" onClick={() => setShowCalendar(false)}>
+                  Cancel
+                </button>
                 <button className="ask-edit-btn" onClick={saveDeadline}>
                   Confirm & Update
                 </button>

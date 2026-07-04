@@ -3,6 +3,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 25px;
+  color: #1a1a1a;
 }
 
 .table-container {
@@ -27,6 +28,7 @@
 .header-cell {
   font-weight: bold;
   font-size: 18px;
+  color: #1a1a1a;
 }
 
 /* الأعمدة */
@@ -53,6 +55,10 @@
   border-bottom: none;
 }
 
+.row-cell {
+  color: #1a1a1a;
+}
+
 /* الحالة */
 .status-box1 {
   display: inline-flex;
@@ -62,7 +68,7 @@
 
 .status-label1 {
   font-size: 14px;
-  color: #777;
+  color: #333;
 }
 
 /* زرار */
@@ -73,7 +79,7 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
-  min-width: 160px; /* 👈 نفس المقاس */
+  min-width: 160px;
   text-align: center;
 }
 .blue-btn {
@@ -88,10 +94,6 @@
 }
 
 /* MODAL */
-/* =========================
-   MODAL
-========================= */
-
 .modal-overlay {
   position: fixed;
   top: 40px;
@@ -115,7 +117,6 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* زرار القفل */
 .close-x-btn {
   position: absolute;
   top: 15px;
@@ -139,10 +140,6 @@
   color: #000;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
 .calendar-footer-custom {
   margin-top: 20px;
   display: flex;
@@ -150,7 +147,6 @@
   gap: 15px;
 }
 
-/* input + label */
 .input-row {
   display: flex;
   flex-direction: column;
@@ -159,7 +155,7 @@
 
 .input-row label {
   font-size: 14px;
-  color: #555;
+  color: #333;
 }
 
 .input-row input {
@@ -167,11 +163,8 @@
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 14px;
+  color: #1a1a1a;
 }
-
-/* =========================
-   REMINDERS
-========================= */
 
 .reminders-box {
   border-top: 1px solid #eee;
@@ -184,7 +177,11 @@
   align-items: center;
 }
 
-/* iOS switch */
+.reminder-toggle span {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
 .ios-switch {
   position: relative;
   display: inline-block;
@@ -230,7 +227,6 @@
   transform: translateX(18px);
 }
 
-/* options */
 .options-list {
   margin-top: 10px;
   display: flex;
@@ -240,11 +236,8 @@
 
 .options-list label {
   font-size: 13px;
+  color: #333;
 }
-
-/* =========================
-   BUTTON
-========================= */
 
 .ask-edit-btn {
   margin-top: 10px;

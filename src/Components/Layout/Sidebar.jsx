@@ -135,7 +135,10 @@ export default function Sidebar() {
 
   return (
     <div className="sidebar">
-      <div className="logo">
+      <div className="logo" onClick={() => {
+        const homePaths = { admin: "/DashBard_Admin", manager: "/DashBoard", employee: "/Employee_DashBoard" };
+        navigate(homePaths[role] || "/");
+      }} style={{ cursor: "pointer" }}>
         <img className="logo-image" src={logo} alt="Logo" />
       </div>
 

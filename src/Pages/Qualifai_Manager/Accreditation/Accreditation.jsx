@@ -2,6 +2,7 @@ import "./Accreditation.css";
 import { useNavigate } from "react-router-dom";
 import academicIcon from "../../../assets/academic-icon.png";
 import programmaticIcon from "../../../assets/programmatic-icon.png";
+import { CheckCircle, ChevronLeft } from "lucide-react";
 
 const AccreditationTypes = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const AccreditationTypes = () => {
       icon: academicIcon,
       applyLink: "تفاصيل الاعتماد",
       detailsLink: "تقييم الاعتماد",
+      features: ["اعتماد مؤسسي", "معايير دولية", "جودة أكاديمية"],
     },
     {
       id: 2,
@@ -24,6 +26,7 @@ const AccreditationTypes = () => {
       icon: programmaticIcon,
       applyLink: "تفاصيل الاعتماد",
       detailsLink: "تقييم الاعتماد",
+      features: ["برامج متخصصة", "تميز أكاديمي", "جودة دولية"],
     },
   ];
 
@@ -34,19 +37,30 @@ const AccreditationTypes = () => {
       <div className="cards-container">
         {accreditationTypes.map((type) => (
           <div key={type.id} className="accreditation-card">
-            <div className="card-icon">
-              <img src={type.icon} alt={type.title} />
+            <div className="card-header">
+              <div className="card-icon">
+                <img src={type.icon} alt={type.title} />
+              </div>
+              <h2 className="card-title">{type.title}</h2>
             </div>
 
-            <h2 className="card-title">{type.title}</h2>
+            <div className="card-body">
+              <p className="card-description">{type.description}</p>
 
-            <p className="card-description">{type.description}</p>
+              <div className="card-features">
+                {type.features.map((feature, i) => (
+                  <span key={i} className="feature-badge">
+                    <CheckCircle size={14} />
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
 
             <div className="card-actions">
               <button
                 className="btn-outline"
                 onClick={() => {
-                  // ⬅️ التعديل هنا: الانتقال لصفحة التفاصيل
                   navigate("/AccreditationDetails", {
                     state: { accreditationType: type.title },
                   });
@@ -65,7 +79,7 @@ const AccreditationTypes = () => {
                   }
                 }}
               >
-                تقييم الاعتماد
+                تقييم الاعتماد <ChevronLeft size={16} />
               </button>
             </div>
           </div>
